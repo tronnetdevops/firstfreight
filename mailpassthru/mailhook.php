@@ -24,7 +24,7 @@
 		error_log(var_export($creds, true));
 		
 		
-		$guid = $creds[0]
+		$guid = $creds[0];
 		$nonce = $creds[1];
 		
 		$package = $memcache->get( $guid );
