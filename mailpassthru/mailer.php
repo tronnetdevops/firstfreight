@@ -2,11 +2,11 @@
 	/**
 	 * Mock users with IDs (doing this to avoid having to make DB assoc and records)
 	 */
-	require 'fakeusers.php';
+	require 'data/fakeusers.php';
 
 	require 'vendor/autoload.php';
 		
-	require 'MemcachedConnector.php';
+	require 'connectors/MemcachedConnector.php';
 	$memcache = MemcachedConnector::GetHandle();
 	
 	$data = $_POST;
@@ -35,7 +35,7 @@
 		/**
 		 * Now...store the message in the DB, as this was a reply...
 		 */ 
-		require 'MySQLConnector.php';
+		require 'connectors/MySQLConnector.php';
 		$db = MySQLConnector::GetHandle();
 		
 		$statement = $db->prepare('INSERT INTO `messages` (`user_id`, `conversation_id`, `message`, `data`) VALUES (?,?,?,?)');
@@ -48,7 +48,7 @@
 		/**
 		 * Lastly, send the email!
 		 */ 
-		require 'SendgridConnector.php';
+		require 'connectors/SendgridConnector.php';
 		$sendgrid = SendgridConnector::GetHandle();
 		
 		$email = new SendGrid\Email();

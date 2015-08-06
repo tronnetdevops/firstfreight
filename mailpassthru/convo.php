@@ -3,12 +3,12 @@
 	/**
 	 * Mock users with IDs (doing this to avoid having to make DB assoc and records)
 	 */
-	require 'fakeusers.php';
+	require 'data/fakeusers.php';
 	
 	/**
 	 * Get messages from database and sort them by conversation IDs.
 	 */
-	require 'MySQLConnector.php';
+	require 'connectors/MySQLConnector.php';
 	$db = MySQLConnector::GetHandle();
 	
 	$statement = $db->prepare('SELECT * FROM `messages`');
@@ -23,8 +23,7 @@
 		}
 		
 		$conversations[ $cid ]['messages'][] = $message;
-	}
-	
+	}	
 ?>
 <!DOCTYPE html>
 <html lang="en">
