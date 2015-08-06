@@ -79,7 +79,7 @@
 		
 		$email
 			->setReplyTo($guid.'.'.$nonce.'@sbdevops.com')
-		    ->setFrom('reply+@firstfreight.com')
+		    ->setFrom( $users[ $data['user_id'] ]['email'] )
 		    ->setSubject('RE: '.$primaryMessage['subject'])
 		    ->setText($data['message'])
 		    ->setHtml($data['message'])
