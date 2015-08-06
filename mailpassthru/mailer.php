@@ -67,15 +67,23 @@
 			$email->addTo($users[ $participentID ]['email']);
 		}
 		
+		
+		/**
+		 * Get the subject stored with the original message.
+		 */
+		$statement = $db->prepare('SELECT `subject` FROM `messages` WHERE `conversation_id`=? LIMIT 1');
+		$statement->execute(array($data['conversation_id']));
+
+		$messages = $statement->fetchAll(PDO::FETCH_ASSOC);
+		$primaryMessage = reset($messsages);
+		
 		$email
 			->setReplyTo($guid.'.'.$nonce.'@sbdevops.com')
-		    ->setFrom('reply@firstfreight.com')
-		    ->setSubject('A reply to a conversation!')
+		    ->setFrom('reply+@firstfreight.com')
+		    ->setSubject('RE: '.$primaryMessage['subject'])
 		    ->setText($data['message'])
 		    ->setHtml($data['message'])
 		;
-		
-		
 		
 		$sendgrid->send($email);
 	}
