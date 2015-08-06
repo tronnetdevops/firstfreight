@@ -61,7 +61,7 @@
 		$statement->execute(array($data['conversation_id']));
 
 		$messages = $statement->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
-		$conversationParticipents = array_keys($messsages);
+		$conversationParticipents = array_keys($messages);
 		
 		foreach ($conversationParticipents as $participentID){
 			$email->addTo($users[ $participentID ]['email']);
@@ -75,7 +75,7 @@
 		$statement->execute(array($data['conversation_id']));
 
 		$messages = $statement->fetchAll(PDO::FETCH_ASSOC);
-		$primaryMessage = reset($messsages);
+		$primaryMessage = reset($messages);
 		
 		$email
 			->setReplyTo($guid.'.'.$nonce.'@sbdevops.com')
