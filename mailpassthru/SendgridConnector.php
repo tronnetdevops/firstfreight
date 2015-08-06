@@ -9,9 +9,7 @@
 
 				$sendgridConfig = json_decode(file_get_contents('sendgrid.json'), true);
 				$sgc = $sendgridConfig['sendgrid'];
-				
-				var_dump($sgc);
-				
+								
 				self::$_sendgrid = new SendGrid($sgc['key']);
 				
 			}
