@@ -17,7 +17,8 @@
 		error_log("Contacts...");
 		error_log(var_export($contacts, true));
 		
-		$creds = explode('.', $contacts['to'][0]);
+		$cid = explode('@', $contacts['to'][0]);
+		$creds = explode('.', $cid[0]);
 		
 		
 		error_log("Creds guid and nonce");
