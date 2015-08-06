@@ -12,14 +12,15 @@
 	$data = $_POST;
 	if (isset($data['conversation_id']) && isset($data['user_id'])){
 		/**
-		 * Create a GUID as a memcached key for pertinent, dynamic information
-		 */ 
-		$guid = md5($data['conversation_id'].$data['user_id'].$data['message']);
-		
-		/**
 		 * Nonce for security...
 		 */ 
 		$nonce = uniqid();
+		
+		/**
+		 * Create a GUID as a memcached key for pertinent, dynamic information
+		 */ 
+		$guid = md5($nonce.$data['conversation_id'].$data['user_id'].$data['message']);
+		
 		$package = array(
 			'nonce' => $nonce,
 			'user_id' => $data['user_id'],
