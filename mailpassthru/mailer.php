@@ -52,14 +52,30 @@
 		$sendgrid = SendgridConnector::GetHandle();
 		
 		$email = new SendGrid\Email();
+		
+		/**
+		 * Go through all users in this particular conversation, and put on reply list
+		 */
+		
+		$statement = $db->prepare('SELECT `user_id` FROM `messages` WHERE `conversation_id`=? GROUP BY `user_id`');
+		$statement->execute(array($data['conversation_id']));
+
+		$messages = $statement->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
+		$conversationParticipents = array_keys($messsages);
+		
+		foreach ($conversationParticipents as $participentID){
+			$email->addTo($users[ $participentID ]['email']);
+		}
+		
 		$email
-		    ->addTo($users[ $data['user_id'] ]['email'])
 			->setReplyTo($guid.'.'.$nonce.'@sbdevops.com')
 		    ->setFrom('reply@firstfreight.com')
 		    ->setSubject('A reply to a conversation!')
 		    ->setText($data['message'])
 		    ->setHtml($data['message'])
 		;
+		
+		
 		
 		$sendgrid->send($email);
 	}
