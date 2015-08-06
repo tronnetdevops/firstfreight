@@ -8,16 +8,28 @@
 	$memcache = MemcachedConnector::GetHandle();
 	
 	$data = $_POST;
+	
+	error_log("Got a Web Hook Reply!!");
+	error_log(var_export($data, true));
 	if (isset($data['envelope'])){
 		$contacts = json_decode($data['envelope'], true);
 		
+		error_log("Contacts...");
+		error_log(var_export($contacts, true));
+		
 		$creds = explode('.', $contacts['to'][0]);
+		
+		
+		error_log("Creds guid and nonce");
+		error_log(var_export($creds, true));
+		
 		
 		$guid = $creds[0]
 		$nonce = $creds[1];
 		
 		$package = $memcache->get( $guid );
 		
+		error_log("checking nonces match: " .$nonce."   =   " . $package['nonce']);
 		if ($package['nonce'] == $nonce){
 			/**
 			 * Now...store the message in the DB, as this was a reply...
