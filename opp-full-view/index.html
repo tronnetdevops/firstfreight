@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Example Details Lane</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/modernizr.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			body{
+				background: whitesmoke;
+				margin-top: 2em;
+			}
+			
+			.opp-container{
+				height: 20em;
+			}
+			
+			.opp-tab-total-stat{
+				background: #3e3e3e; 
+				border-radius: 6px; 
+				padding: .1rem .4rem; 
+				color: white;
+				margin-right: .2rem;
+			}
+			
+			.opp-tab-total-stat.new{
+				background: inherit;
+				color: green;
+				margin-right: 0;
+				
+			}
+			
+			.opp-details-extra-info{
+				margin-left: 0;
+				margin-right:;
+			}
+			
+			.tabs-content{
+				background: white;
+			}
+			
+			.tabs-content .content{
+/*				padding-top: 0;*/
+			}
+			
+			.tabs-content .content .tab-content-container{
+				padding-left: 1em;
+				padding-right: 1em;
+				display: table;
+				width: 80%;
+			}
+			
+			.opp-tab-list{
+				width: 100%;
+			}
+			
+			.opp-tab-header{
+			    background: #3e3e3e;
+			    padding-top: .5rem;
+			    padding-bottom: 0;
+			    margin-bottom: .5rem;
+			    color: white;
+			    height: 3em;
+			}
+			
+			.opp-tab-header h4{
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="container opp-container row">
+			<ul class="tabs vertical" data-tab="">
+				<li class="tab-title active">
+					<a href="#opp-ID-details">
+						<h5>Details</h5>
+						<sub>TYO Charlotte NC</sub>
+					</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-opportunities">
+						<span class="opp-tab-total-stat">1</span>
+						Opportunities</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-contacts">
+						<span class="opp-tab-total-stat">1</span>
+						Contacts
+						<sup class="opp-tab-total-stat new">new</sup>
+					</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-activity">
+						<span class="opp-tab-total-stat">0</span>
+						Activity</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-email">
+						<span class="opp-tab-total-stat">0</span>
+						Emails</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-documents">
+						<span class="opp-tab-total-stat">6</span>
+						Documents</a>
+				</li>
+				<li class="tab-title">
+					<a href="#opp-ID-history">
+						<span class="opp-tab-total-stat">1</span>
+						History</a>
+				</li>
+			</ul>
+
+			<div class="tabs-content">
+				<div class="content active" id="opp-ID-details">
+					<div class="tab-content-container">
+						<div class="row">
+							<div class="small-8 columns">
+								<h1>TYO Charlotte NC</h1>
+								<h3>
+									<a href="#">Direct Import Advantage</a>
+									<sub>[ <a href="#">New Business</a> ]</sub>
+								</h3>
+								<p>Here are some comments...</p>
+							</div>
+							<div class="small-4 columns">
+								<div class="row collapse">
+									<div class="small-12 columns text-right opp-opp-controls">
+										<button class="tiny"><i class="fa fa-clone"></i> Clone</button>
+										<button class="tiny"><i class="fa fa-user"></i> Invite</button>
+									</div>
+									<div class="small-12 columns opp-opp-stats">
+										<ul class="pricing-table">
+											<li class="title">Stats</li>
+											<li class="bullet-item">Revenue: $240,000.00 LKR</li>
+											<li class="price" style="font-size: 0.875rem;">Profit: $12,000.00 LKR</li>
+											<li class="bullet-item">Stage: Won</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="small-12 columns">
+								
+								<ul class="accordion opp-details-extra-info" data-accordion="">
+									<li class="accordion-navigation">
+										<a href="#panel1a"><strong>Business:</strong> Automotive</a>
+										<div id="panel1a" class="content">
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Industry</strong>
+												</div>
+												<div class="small-8 columns">
+													<p><a href="">Automotive</a><p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Commodities</strong>
+												</div>
+												<div class="small-8 columns">
+													<p><a href="">Tire Casings</a><p>
+												</div>
+											</div>
+				
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Competitors</strong>
+												</div>
+												<div class="small-8 columns">
+													<p><a href="">DSV</a>, <a href="">K&N</a>, <a href="">Horizon</a><p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="accordion-navigation">
+										<a href="#panel2a"><strong>Collaborators:</strong> Bret Nelson</a>
+										<div id="panel2a" class="content">
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Primary</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>Bret Nelson<p>
+												</div>
+											</div>
+					
+											<div class="collapse" id="opp-content-ID-contacts">
+					
+												<div class="row">
+													<div class="small-4 columns">
+														<strong>Sales Rep</strong>
+													</div>
+													<div class="small-8 columns">
+														<p>Orlando Tsosie<p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									
+									
+									<li class="accordion-navigation">
+										<a href="#panel3a"><strong>Dates:</strong> Decision 02/10/2015</a>
+										<div id="panel3a" class="content">
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Proposal</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>11/22/2014<p>
+												</div>
+											</div>
+					
+											<div class="collapse" id="opp-content-ID-dates">
+												<div class="row">
+													<div class="small-4 columns">
+														<strong>Decision</strong>
+													</div>
+													<div class="small-8 columns">
+														<p>02/10/2015<p>
+													</div>
+												</div>
+										
+												<div class="row">
+													<div class="small-4 columns">
+														<strong>First Shipment</strong>
+													</div>
+													<div class="small-8 columns">
+														<p>04/01/2015<p>
+													</div>
+												</div>
+					
+												<div class="row">
+													<div class="small-4 columns">
+														<strong>Contract End</strong>
+													</div>
+													<div class="small-8 columns">
+														<p>11/01/2015<p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+								
+								
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- OPPORTUNITIES CONTENT -->
+				
+				<div class="content" id="opp-ID-opportunities">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>Opportunities</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-opp-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+
+						<table class="row-border hover order-column opp-opportunities-list opp-tab-list">
+							<thead>
+								<tr>
+									<th width="80">
+										Service
+									</th>
+									<th width="100">
+										Origin
+									</th>
+									<th width="100">
+										Destination
+									</th>
+									<th width="50">
+										Volume
+									</th>
+									<th width="50">
+										Revenue
+									</th>
+									<th width="50">
+										Profit
+									</th>
+									<th width="50">
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							
+					        <tfoot>
+					            <tr>
+					                <th colspan="2" style="text-align:right"></th>
+					                <th colspan="2" style="text-align:right">Per Year Totals:</th>
+					                <th colspan="1" style="text-align:left"></th>
+					                <th colspan="1" style="text-align:left"></th>
+					                <th colspan="1" style="text-align:right"></th>
+					            </tr>
+					        </tfoot>
+							
+							<tbody>
+								<tr>
+									<td>
+										<a href="#">Ocean FCL</a>
+									</td>
+									<td>
+										<a href="#">IN</a>
+									</td>
+									<td>
+										<a href="#">IN</a>
+									</td>
+									<td>
+										456 <a href="#">TEUs</a>
+									</td>
+									<td>
+										$240,000 <a href="#">LKR</a>
+									</td>
+									<td>
+										$12,000 <a href="#">LKR</a>
+									</td>
+									<td>
+										<i class="fa fa-pencil"></i>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<a href="#">Ocean FCL</a>
+									</td>
+									<td>
+										<a href="#">IN</a>
+									</td>
+									<td>
+										<a href="#">IN</a>
+									</td>
+									<td>
+										200 <a href="#">TEUs</a>
+									</td>
+									<td>
+										$80,000 <a href="#">LKR</a>
+									</td>
+									<td>
+										$1,500 <a href="#">LKR</a>
+									</td>
+									<td>
+										<i class="fa fa-pencil"></i>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+				
+				
+				<!-- CONTACTS CONTENT -->
+								
+				<div class="content" id="opp-ID-contacts">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>Contacts</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-contacts-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+						<table class="row-border hover order-column opp-contacts-list opp-tab-list">
+							<thead>
+								<tr>
+									<th width="80">
+										Name
+									</th>
+									<th width="100">
+										Title
+									</th>
+									<th width="100">
+										Phone
+									</th>
+									<th width="50">
+										Email
+									</th>
+									<th width="50">
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>
+										<a href="#">Joe Smith</a>
+									</td>
+									<td>
+										&nbsp;
+									</td>
+									<td>
+										<i class="fa fa-phone"></i>
+										<a href="tel:8055555555">(805) 555-5555</a>
+									</td>
+									<td>
+										<i class="fa fa-envelope"></i>
+										<a href="mailto:testo@presto.com">testo@presto.com</a>
+									</td>
+									<td>
+										<i class="fa fa-pencil"></i>
+										<i class="fa fa-trash"></i>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+				<!-- ACTIVITY CONTENT -->
+								
+				<div class="content" id="opp-ID-activity">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>Activity</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-activity-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+						<table class="row-border hover order-column opp-activity-list opp-tab-list">
+							<thead>
+								<tr>
+									<th width="80">
+										Date
+									</th>
+									<th width="100">
+										Assigned
+									</th>
+									<th width="100">
+										Type
+									</th>
+									<th width="50">
+										Description
+									</th>
+									<th width="50">
+										Status
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th class="text-center">
+										No Activity
+									</th>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<!-- EMAILS CONTENT -->
+								
+				<div class="content" id="opp-ID-emails">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>Emails</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-emails-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+						<table class="row-border hover order-column opp-emails-list opp-tab-list">
+							<thead>
+								<tr>
+									<th width="80">
+										To
+									</th>
+									<th width="100">
+										From
+									</th>
+									<th width="100">
+										Date
+									</th>
+									<th width="50">
+										Subject
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th class="text-center">
+										No Emails
+									</th>
+									<th>&nbsp;</th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				
+				<!-- DOCUMENTS CONTENT -->
+								
+				<div class="content" id="opp-ID-documents">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>Documents</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-documents-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+						<ul class="small-block-grid-3 medium-block-grid-4">
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Doc">
+									<img src="http://placehold.it/150x150?text=Doc">
+								</a>
+							</li>
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Doc">
+									<img src="http://placehold.it/150x150?text=Doc">
+								</a>
+							</li>
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Img">
+									<img src="http://placehold.it/150x150?text=Img">
+								</a>
+							</li>
+
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Audio">
+									<img src="http://placehold.it/150x150?text=Audio">
+								</a>
+							</li>
+
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Doc">
+									<img src="http://placehold.it/150x150?text=Doc">
+								</a>
+							</li>
+
+							<li>
+								<a class="th" href="http://placehold.it/150x150?text=Doc">
+									<img src="http://placehold.it/150x150?text=Doc">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- HISTORY CONTENT -->
+								
+				<div class="content" id="opp-ID-history">
+					<div class="tab-content-container">
+						
+						<div class="opp-tab-header">
+							<div class="small-8 columns">
+								<h4>History</h4>
+							</div>
+							<div class="small-4 columns">
+								<div class="small-12 columns text-right opp-history-controls">
+									<button class="tiny"><i class="fa fa-plus"></i> Add</button>
+								</div>
+							</div>
+						</div>
+						
+						<table class="row-border hover order-column opp-history-list opp-tab-list">
+							<thead>
+								<tr>
+									<th width="80">
+										Date
+									</th>
+									<th width="100">
+										Assigned
+									</th>
+									<th width="100">
+										Type
+									</th>
+									<th width="50">
+										Description
+									</th>
+									<th width="50">
+										&nbsp;
+									</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>
+										03-Aug-2015
+									</td>
+									<td>
+										<a href="#">Namita Shinde</a>
+									</td>
+									<td>
+										<a href="#">Log Call</a>
+									</td>
+									<td>
+										<i class="fa fa-envelope"></i>
+										<a href="mailto:testo@presto.com">testo@presto.com</a>
+									</td>
+									<td>
+										<i class="fa fa-pencil"></i>
+										<i class="fa fa-trash"></i>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+
+		</div>
+		
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+		
+		<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/foundation/dataTables.foundation.js"></script>
+	
+		<script>
+			
+			$(document).foundation();
+			
+			if (location.hash != "#simple"){
+				
+				$(".opp-contacts-list,.opp-activity-list,.opp-emails-list").dataTable();
+			
+				$('.opp-opportunities-list').dataTable({
+			        "footerCallback": function ( row, data, start, end, display ) {
+			            var api = this.api(), data;
+					
+						console.log("well...")
+ 
+			            // Remove the formatting to get integer data for summation
+			            var intVal = function ( i ) {
+			                return typeof i === 'string' ?
+			                    +i.replace(/[^\d\.]/g, '') :
+			                    typeof i === 'number' ?
+			                        +i : 0;
+			            };
+ 
+			            // Total over all pages
+			            total = api
+			                .column( 3 )
+			                .data()
+			                .reduce( function (a, b) {
+			                    return intVal(a) + intVal(b);
+			                } );
+ 
+			            // Total over this page
+			            pageTotal = api
+			                .column( 3, { page: 'current'} )
+			                .data()
+			                .reduce( function (a, b) {
+			                    return intVal(a) + intVal(b);
+			                }, 0 );
+ 
+			            // Update footer
+			            $( api.column( 4 ).footer() ).html(
+			                '$'+ numeral(total).format("0,0")
+			            );
+					
+			            // Total over all pages
+			            total = api
+			                .column( 4 )
+			                .data()
+			                .reduce( function (a, b) {
+			                    return intVal(a) + intVal(b);
+			                } );
+					
+			            pageTotal = api
+			                .column( 4, { page: 'current'} )
+			                .data()
+			                .reduce( function (a, b) {
+			                    return intVal(a) + intVal(b);
+			                }, 0 );
+
+			            // Update footer
+			            $( api.column( 5 ).footer() ).html(
+			                '$'+ numeral(total).format("0,0")
+			            );
+					}
+				});
+			}
+			
+		</script>
+	</body>
+</html>
