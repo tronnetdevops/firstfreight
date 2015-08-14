@@ -93,7 +93,7 @@
 				</li>
 				<li class="tab-title">
 					<a href="#opp-ID-opportunities">
-						<span class="opp-tab-total-stat">1</span>
+						<span class="opp-tab-total-stat">2</span>
 						Opportunities</a>
 				</li>
 				<li class="tab-title">
@@ -146,8 +146,8 @@
 									<div class="small-12 columns opp-opp-stats">
 										<ul class="pricing-table">
 											<li class="title">Stats</li>
-											<li class="bullet-item">Revenue: $240,000.00 LKR</li>
-											<li class="price" style="font-size: 0.875rem;">Profit: $12,000.00 LKR</li>
+											<li class="bullet-item">Revenue: $320,000.00 LKR</li>
+											<li class="price" style="font-size: 0.875rem;">Profit: $13,500.00 LKR</li>
 											<li class="bullet-item">Stage: Won</li>
 										</ul>
 									</div>
@@ -701,7 +701,7 @@
  
 				            // Total over all pages
 				            total = api
-				                .column( 3 )
+				                .column( 4 )
 				                .data()
 				                .reduce( function (a, b) {
 				                    return intVal(a) + intVal(b);
@@ -709,7 +709,7 @@
  
 				            // Total over this page
 				            pageTotal = api
-				                .column( 3, { page: 'current'} )
+				                .column( 4, { page: 'current'} )
 				                .data()
 				                .reduce( function (a, b) {
 				                    return intVal(a) + intVal(b);
@@ -722,14 +722,14 @@
 					
 				            // Total over all pages
 				            total = api
-				                .column( 4 )
+				                .column( 5 )
 				                .data()
 				                .reduce( function (a, b) {
 				                    return intVal(a) + intVal(b);
 				                } );
 					
 				            pageTotal = api
-				                .column( 4, { page: 'current'} )
+				                .column( 5, { page: 'current'} )
 				                .data()
 				                .reduce( function (a, b) {
 				                    return intVal(a) + intVal(b);
