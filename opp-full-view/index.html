@@ -75,6 +75,10 @@
 				margin: -5px 0;
 			}
 			
+			.dataTables_length label,.dataTables_filter label{
+				font-size: 0;
+			}
+			
 			.opp-tab-header{
 			    background: #3e3e3e;
 			    padding-top: .5rem;
@@ -749,14 +753,7 @@
 				            );
 						}
 					});
-					
-					$(".dataTables_length").each(function(){ 
-						$(this).html( $(this).find("select") ); 
-					});
-					
-					$(".dataTables_filter").each(function(){ 
-						$(this).html( $(this).find("input").attr("placeholder", "Search") ); 
-					});
+
 				}
 			});
 			
