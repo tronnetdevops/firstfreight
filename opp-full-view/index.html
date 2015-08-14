@@ -171,8 +171,15 @@
 								
 								<ul class="accordion opp-details-extra-info" data-accordion="">
 									<li class="accordion-navigation">
-										<a href="#panel1a"><strong>Business:</strong> Automotive</a>
-										<div id="panel1a" class="content">
+										<a href="#opp-business-content" class="opp-details-categories-btn">
+											<i class="fa fa-building"></i>
+											<strong>Business:</strong>
+											<span>Automotive</span>
+											<div class="right opp-category-state-indicator">
+												<i class="fa fa-chevron-down"></i>
+											</div>
+										</a>
+										<div id="opp-business-content" class="content">
 											<div class="row">
 												<div class="small-4 columns">
 													<strong>Industry</strong>
@@ -200,9 +207,17 @@
 											</div>
 										</div>
 									</li>
+									
 									<li class="accordion-navigation">
-										<a href="#panel2a"><strong>Collaborators:</strong> Bret Nelson</a>
-										<div id="panel2a" class="content">
+										<a href="#opp-callborators-content" class="opp-details-categories-btn">
+											<i class="fa fa-users"></i>
+											<strong>Collaborators:</strong> 
+											<span><i>Bret Nelson</i></span>
+											<div class="right opp-category-state-indicator">
+												<i class="fa fa-chevron-down"></i>
+											</div>
+										</a>
+										<div id="opp-callborators-content" class="content">
 											<div class="row">
 												<div class="small-4 columns">
 													<strong>Primary</strong>
@@ -228,8 +243,15 @@
 									
 									
 									<li class="accordion-navigation">
-										<a href="#panel3a"><strong>Dates:</strong> Decision 02/10/2015</a>
-										<div id="panel3a" class="content">
+										<a href="#opp-dates-content" class="opp-details-categories-btn">
+											<i class="fa fa-calendar"></i>
+											<strong>Dates:</strong>
+											<span>Decision <u>02/10/2015</u></span>
+											<div class="right opp-category-state-indicator">
+												<i class="fa fa-chevron-down"></i>
+											</div>
+										</a>
+										<div id="opp-dates-content" class="content">
 											<div class="row">
 												<div class="small-4 columns">
 													<strong>Proposal</strong>
@@ -752,6 +774,23 @@
 					});
 					
 					$(".dataTables_filter input").attr("placeholder", "Search");
+					
+					$(".opp-details-categories-btn").on("click", function(){
+						var flip = !$(this).find(".opp-category-state-indicator i.fa").hasClass("fa-chevron-up");
+						
+						$(".opp-details-categories-btn")
+							.find(".opp-category-state-indicator i.fa")
+								.removeClass("fa-chevron-up")
+								.addClass("fa-chevron-down");
+						
+						if (flip) {
+							$(this)
+								.find(".opp-category-state-indicator i.fa")
+									.addClass("fa-chevron-up")
+									.removeClass("fa-chevron-down");
+						}	
+
+					})
 				}
 			});
 			
