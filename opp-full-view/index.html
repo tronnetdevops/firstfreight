@@ -67,6 +67,14 @@
 				width: 100%;
 			}
 			
+			.opp-tab-list thead tr th{
+				cursor: pointer;
+			}
+			
+			.dataTables_filter input{
+				margin: -5px 0;
+			}
+			
 			.opp-tab-header{
 			    background: #3e3e3e;
 			    padding-top: .5rem;
@@ -285,7 +293,7 @@
 						</div>
 						
 
-						<table class="row-border hover order-column opp-opportunities-list opp-tab-list">
+						<table class="display opp-opportunities-list opp-tab-list">
 							<thead>
 								<tr>
 									<th width="80">
@@ -740,6 +748,14 @@
 				                '$'+ numeral(total).format("0,0")
 				            );
 						}
+					});
+					
+					$(".dataTables_length").each(function(){ 
+						$(this).html( $(this).find("select") ); 
+					});
+					
+					$(".dataTables_filter").each(function(){ 
+						$(this).html( $(this).find("input").attr("placeholder", "Search") ); 
 					});
 				}
 			});
