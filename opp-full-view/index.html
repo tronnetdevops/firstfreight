@@ -673,70 +673,76 @@
 		<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/foundation/dataTables.foundation.js"></script>
 	
 		<script>
-			
-			$(document).foundation();
-			
-			if (location.hash != "#simple"){
+			$(function(){
 				
-				$(".opp-contacts-list,.opp-activity-list,.opp-emails-list").dataTable();
+				$(document).foundation();
 			
-				$('.opp-opportunities-list').dataTable({
-			        "footerCallback": function ( row, data, start, end, display ) {
-			            var api = this.api(), data;
-					
-						console.log("well...")
- 
-			            // Remove the formatting to get integer data for summation
-			            var intVal = function ( i ) {
-			                return typeof i === 'string' ?
-			                    +i.replace(/[^\d\.]/g, '') :
-			                    typeof i === 'number' ?
-			                        +i : 0;
-			            };
- 
-			            // Total over all pages
-			            total = api
-			                .column( 3 )
-			                .data()
-			                .reduce( function (a, b) {
-			                    return intVal(a) + intVal(b);
-			                } );
- 
-			            // Total over this page
-			            pageTotal = api
-			                .column( 3, { page: 'current'} )
-			                .data()
-			                .reduce( function (a, b) {
-			                    return intVal(a) + intVal(b);
-			                }, 0 );
- 
-			            // Update footer
-			            $( api.column( 4 ).footer() ).html(
-			                '$'+ numeral(total).format("0,0")
-			            );
-					
-			            // Total over all pages
-			            total = api
-			                .column( 4 )
-			                .data()
-			                .reduce( function (a, b) {
-			                    return intVal(a) + intVal(b);
-			                } );
-					
-			            pageTotal = api
-			                .column( 4, { page: 'current'} )
-			                .data()
-			                .reduce( function (a, b) {
-			                    return intVal(a) + intVal(b);
-			                }, 0 );
-
-			            // Update footer
-			            $( api.column( 5 ).footer() ).html(
-			                '$'+ numeral(total).format("0,0")
-			            );
-					}
+				$(".tabs .tab-title").on("click", function(){
+					$(this).find(".opp-tab-total-stat.new").remove();
 				});
-			}
+			
+				if (location.hash != "#simple"){
+				
+					$(".opp-contacts-list,.opp-activity-list,.opp-emails-list").dataTable();
+			
+					$('.opp-opportunities-list').dataTable({
+				        "footerCallback": function ( row, data, start, end, display ) {
+				            var api = this.api(), data;
+					
+							console.log("well...")
+ 
+				            // Remove the formatting to get integer data for summation
+				            var intVal = function ( i ) {
+				                return typeof i === 'string' ?
+				                    +i.replace(/[^\d\.]/g, '') :
+				                    typeof i === 'number' ?
+				                        +i : 0;
+				            };
+ 
+				            // Total over all pages
+				            total = api
+				                .column( 3 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                } );
+ 
+				            // Total over this page
+				            pageTotal = api
+				                .column( 3, { page: 'current'} )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+ 
+				            // Update footer
+				            $( api.column( 4 ).footer() ).html(
+				                '$'+ numeral(total).format("0,0")
+				            );
+					
+				            // Total over all pages
+				            total = api
+				                .column( 4 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                } );
+					
+				            pageTotal = api
+				                .column( 4, { page: 'current'} )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+
+				            // Update footer
+				            $( api.column( 5 ).footer() ).html(
+				                '$'+ numeral(total).format("0,0")
+				            );
+						}
+					});
+				}
+			});
 			
 		</script>
 	</body>
