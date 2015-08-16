@@ -28,6 +28,14 @@
 				height: 20em;
 			}
 			
+			.opp-opp-controls{
+/*				margin-top: 1rem;*/
+			}
+			
+			.opp-opp-stats.won .title{
+				background: green;
+			}
+			
 			.opp-tab-total-stat{
 				background: #3e3e3e; 
 				border-radius: 6px; 
@@ -91,6 +99,10 @@
 			.opp-tab-header h4{
 				color: white;
 			}
+			
+			.opp-comment{
+/*				background: whitesmoke;*/
+			}
 		</style>
 	</head>
 	<body>
@@ -99,14 +111,14 @@
 			<ul class="tabs vertical" data-tab="">
 				<li class="tab-title active">
 					<a href="#opp-ID-details">
-						<h5>Details</h5>
-						<sub>TYO Charlotte NC</sub>
+						<h5>Opportunity</h5>
+						<sub>Won - 08/14/2014</sub>
 					</a>
 				</li>
 				<li class="tab-title">
 					<a href="#opp-ID-opportunities">
 						<span class="opp-tab-total-stat">2</span>
-						Opportunities</a>
+						Lanes</a>
 				</li>
 				<li class="tab-title">
 					<a href="#opp-ID-contacts">
@@ -141,33 +153,61 @@
 				<div class="content active" id="opp-ID-details">
 					<div class="tab-content-container">
 						<div class="row">
-							<div class="small-8 columns">
+							<div class="small-7 columns">
 								<h1>TYO Charlotte NC</h1>
 								<h3>
 									<a href="#">Direct Import Advantage</a>
-									<sub>[ <a href="#">New Business</a> ]</sub>
 								</h3>
-								<p>Here are some comments...</p>
 							</div>
-							<div class="small-4 columns">
+							<div class="small-5 columns">
 								<div class="row collapse">
 									<div class="small-12 columns text-right opp-opp-controls">
 										<button class="tiny"><i class="fa fa-clone"></i> Clone</button>
 										<button class="tiny"><i class="fa fa-user"></i> Invite</button>
+										<button class="tiny"><i class="fa fa-envelope"></i> Email</button>
 									</div>
-									<div class="small-12 columns opp-opp-stats">
+								</div>
+							</div>
+						</div>
+							
+						<div class="row">
+							<div class="small-9 columns">
+								<div class="panel clearfix">
+									<div class="row">
+										<div class="small-12 columns">
+											<label>
+												<i class="fa fa-user"></i>
+												<span><a href="#">Bobby Singer</a> was added as a contact on <a href="#">Aug 14th, 2015</a>.</span>
+											</label>
+										</div>
+										<div class="small-12 columns">
+											<hr/>
+											
+											<label>
+												<i class="fa fa-file"></i>
+												<span><a href="#">New Document</a> was added as a contact on <a href="#">Aug 15th, 2015</a>.</span>
+											</label>
+										</div>
+									</div>
+									<sub><a href="#" class="right">more...</a></sub>
+								</div>
+							</div>
+							<div class="small-3 columns">
+								<div class="row collapse">
+									<div class="small-12 columns opp-opp-stats won">
 										<ul class="pricing-table">
-											<li class="title">Stats</li>
-											<li class="bullet-item">Revenue: $320,000.00 LKR</li>
-											<li class="price" style="font-size: 0.875rem;">Profit: $13,500.00 LKR</li>
-											<li class="bullet-item">Stage: Won</li>
+											<li class="title">Won</li>
+											<li class="bullet-item text-left">$320,000.00 LKR</li>
+											<li class="price text-left" style="font-size: 0.875rem;">$13,500.00 LKR</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
+						
 						<div class="row">
-							<div class="small-12 columns">
+							
+							<div class="small-5 columns">
 								
 								<ul class="accordion opp-details-extra-info" data-accordion="">
 									<li class="accordion-navigation">
@@ -207,41 +247,7 @@
 											</div>
 										</div>
 									</li>
-									
-									<li class="accordion-navigation">
-										<a href="#opp-callborators-content" class="opp-details-categories-btn">
-											<i class="fa fa-users"></i>
-											<strong>Collaborators:</strong> 
-											<span><i>Bret Nelson</i></span>
-											<div class="right opp-category-state-indicator">
-												<i class="fa fa-chevron-down"></i>
-											</div>
-										</a>
-										<div id="opp-callborators-content" class="content">
-											<div class="row">
-												<div class="small-4 columns">
-													<strong>Primary</strong>
-												</div>
-												<div class="small-8 columns">
-													<p>Bret Nelson<p>
-												</div>
-											</div>
-					
-											<div class="collapse" id="opp-content-ID-contacts">
-					
-												<div class="row">
-													<div class="small-4 columns">
-														<strong>Sales Rep</strong>
-													</div>
-													<div class="small-8 columns">
-														<p>Orlando Tsosie<p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-									
-									
+																	
 									<li class="accordion-navigation">
 										<a href="#opp-dates-content" class="opp-details-categories-btn">
 											<i class="fa fa-calendar"></i>
@@ -291,14 +297,104 @@
 											</div>
 										</div>
 									</li>
+									
+									
+									<li class="accordion-navigation">
+										<a href="#opp-callborators-content" class="opp-details-categories-btn">
+											<i class="fa fa-users"></i>
+											<strong>Collaborators:</strong> 
+											<span><i>Bret Nelson</i></span>,
+											<span><i>Orlando Tsosie</i></span>,
+											<span><i>Bobby Singer</i></span>
+											<div class="right opp-category-state-indicator">
+												<i class="fa fa-chevron-down"></i>
+											</div>
+										</a>
+										<div id="opp-callborators-content" class="content">
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Primary</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>Bret Nelson<p>
+												</div>
+											</div>
+					
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Sales Rep</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>Orlando Tsosie<p>
+												</div>
+											</div>
+										</div>
+									</li>
+									
+									<li class="accordion-navigation">
+										<a href="#opp-more-content" class="opp-details-categories-btn">
+											<i class="fa fa-bars"></i>
+											<strong>More</strong>
+											<div class="right opp-category-state-indicator">
+												<i class="fa fa-chevron-down"></i>
+											</div>
+										</a>
+										<div id="opp-more-content" class="content">
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Req Type</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>RFP<p>
+												</div>
+											</div>
+					
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Opp Type</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>New Business<p>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="small-4 columns">
+													<strong>Opp #</strong>
+												</div>
+												<div class="small-8 columns">
+													<p>10930848108<p>
+												</div>
+											</div>
+										</div>
+									</li>
 								</ul>
-
-								
-								
-								
 								
 							</div>
+							
+							
+							<div class="small-7 columns">
+								<h3>Comments</h3>
+								<article class="opp-comment">
+									<p><i>Some comments on this opportunity...</i></p>
+									<sup class="right">By <a href="#">Bobby Singer</a> on <a href="#">Aug 14, 2015</a></sup>
+									<hr/>
+								</article>
+								
+								<form>
+									<div class="row">
+										<div class="large-12 columns">
+											<label>Reply
+												<textarea type="text"></textarea>
+											</label>
+										</div>
+									</div>
+									<button class="tiny right">Submit</button>
+								</form>
+							</div>
 						</div>
+						
+						
 					</div>
 				</div>
 				
@@ -309,7 +405,7 @@
 						
 						<div class="opp-tab-header">
 							<div class="small-8 columns">
-								<h4>Opportunities</h4>
+								<h4>Lanes</h4>
 							</div>
 							<div class="small-4 columns">
 								<div class="small-12 columns text-right opp-opp-controls">
