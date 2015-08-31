@@ -13,7 +13,7 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,7 +43,41 @@
 		}
 		
 		textarea{
-			height: 10em !important;
+			height: 12em !important;
+		}
+		
+		.step-number{
+		    border-radius: 60px;
+		    padding: .3em .5em;
+		}
+		
+		.step-number.one{
+			background: #e9e9e9;
+		}
+		
+		.step-number.two{
+			background: #e5e5e5;
+		}
+		
+		.step-number.three{
+			background: #e1e1e1;
+		}
+		
+		.or-sep{
+		    border-top: 1px solid #9e9e9e;
+		    margin-top: 30px;
+		    margin-bottom: 15px;
+		    color: #5e5e5e;
+		}
+		
+		.or-sep-text{
+			background: whitesmoke;
+		    margin: -13px auto;
+		    width: 3em;
+		    text-align: center;
+		    border: 1px solid #9e9e9e;
+		    border-radius: 60px;
+		    padding: .3em .5em;
 		}
 	</style>
   </head>
@@ -62,77 +96,108 @@
 		<div class="row">
 			
 			<div class="col-xs-12">
-				
-				<div class="row" id="content-container">
-					
-					<div class="col-xs-6">
-												
-						<div class="row">
-							<div class="col-lg-12">
-								<textarea placeholder="Write a custom message..." class="form-control"></textarea>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="well well-sm">
+							<h3>How it works</h3>
+							<p>Invite potential collaborators to this opportunity!</p>
+							
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-4 text-center">
+											<h1 class="step-number one">1.</h1>
+										</div>
+										<div class="col-xs-8" style="padding-top: 1.5em;">
+											<sub>Either <em>enter an email</em>, or start typing the name of the <em>contact</em> to invite!</sub>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-4 text-center">
+											<h1 class="step-number two">2.</h1>
+										</div>
+										<div class="col-xs-8" style="padding-top: 1.5em;">
+											<sub>Write them a custom message, or we'll put something in for you :)</sub>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-4 text-center">
+											<h1 class="step-number three">3.</h1>
+										</div>
+										<div class="col-xs-8" style="padding-top: 1.5em;">
+											<sub>We'll let you know when they accept Start collaborating!.</sub>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div><!-- /.row -->
-						
-						<hr/>
-						
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="input-group">
-									<span class="input-group-addon" id="sizing-addon1">
-										<span class="glyphicon glyphicon-lock"></span>
-
-										What level of permissions?
-									</span>
-									<span class="input-group-addon" id="sizing-addon1">
-										<select class="form-control" style="display: inline;">
-											<option selected>Guest</option>
-											<option>Owner</option>
-										</select>
-									</span>
-								</div><!-- /input-group -->
-							</div>
-						</div><!-- /.row -->
-						
+						</div>
 					</div>
-					<div class="col-xs-6">
+				</div>
+				<div class="row" id="content-container">
+					<div class="col-xs-4">
 						
-												
 						<div class="row">
 							<div class="col-lg-12">
+								<label>Email</label>
 								<div class="input-group">
 									<span class="input-group-addon" id="sizing-addon1">
 										<span class="glyphicon glyphicon-envelope"></span>
 									</span>
-									<input type="text" class="form-control" placeholder="Email to invite" aria-label="..." />								
-									<div class="input-group-btn">
-								        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-share"></span> Invite</button>
-										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Email</a></li>
-											<li><a href="#"><span class="glyphicon glyphicon-globe"></span> LinkedIn</a></li>
-											<li><a href="#"><span class="glyphicon glyphicon-link"></span> Gmail</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a href="#">Other</a></li>
-										</ul>
-									</div><!-- /btn-group -->
+									<input class="form-control" placeholder="user@email.com"/>							
 								</div><!-- /input-group -->
 							</div><!-- /.col-lg-6 -->
 						</div>
 						
-						<br/>
-						<div class="well well-sm">
-							<h3>How it works</h3>
-							<p>Invite potential collaborators to this opportunity!</p>
-							<ol>
-								<li>Enter email, select privacy and send invite.</li>
-									
-								<li>We'll let you know when they accept.</li>
-								
-								<li>Start collaborating!</li>
-								
-							</ol>
-							
+						<div class="or-sep">
+							<h5 class="or-sep-text">OR</h5>
 						</div>
+										
+						<div class="row">
+							<div class="col-lg-12">
+								<label>Contact</label>
+								<div class="input-group">
+									<span class="input-group-addon" id="sizing-addon1">
+										<span class="glyphicon glyphicon-user"></span>
+									</span>
+									<select class="js-example-basic-multiple" multiple="multiple" style="width: 100%">
+									  <option value="AL">Dave Mustaine</option>
+									  <option value="WY">Ozzy Osbourne</option>
+									</select>							
+								</div><!-- /input-group -->
+							</div><!-- /.col-lg-6 -->
+						</div>
+						
+
+					</div>
+					
+					<div class="col-xs-4" style="padding-left: 2em">
+						
+						<div class="row" style="border-left: 1px solid #e9e9e9;">
+							<div class="col-lg-12">
+								<textarea placeholder="Write a custom message..." class="form-control"></textarea>
+							</div>
+						</div><!-- /.row -->
+
+						
+					</div>
+
+					<div class="col-xs-4" style="padding-left: 2em">
+						
+						<div class="row" style="border-left: 1px solid #e9e9e9;">
+							<div class="col-lg-12 text-center" style="padding-top: 4em; padding-bottom: 4em;">
+								
+								<button type="button" class="btn btn-default btn-lg" aria-label="">
+									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+									Invite!
+								</button>
+							</div>
+						</div><!-- /.row -->
+
+						
 					</div>
 				</div>
 			</div>
@@ -141,8 +206,15 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(".js-example-basic-multiple").select2({
+		  placeholder: "Collaborator Name..."
+		});
+	</script>
   </body>
 </html>
