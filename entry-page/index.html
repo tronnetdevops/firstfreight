@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Example Details Lane</title>
+
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+			
+		<style>
+			.row.no-gutter {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.row.no-gutter [class*='col-']:not(:first-child),
+			.row.no-gutter [class*='col-']:not(:last-child) {
+				padding-right: 0;
+				padding-left: 0;
+			}
+
+			.ff-logo{
+			    margin: -10px;
+			}
+			
+			.ff-stat-total{
+			    font-size: 2em;
+			    margin: 0;
+			}
+			
+			.ff-notification-time{
+				color: grey;
+				font-size: .9em;
+			}
+			
+			.ff-notifications-container{
+				border: none;
+				box-shadow: none;
+			}
+			
+			.ff-notification-container{
+			    margin: 0;
+			    border-bottom: none;
+			    border-radius: 0;
+				box-shadow: none;
+			}
+			
+			.ff-notification-container .panel-heading{
+				background: none;
+				border-bottom: 0;
+			}
+			
+			.ff-notification-tab-trigger{
+				cursor: pointer;
+			}
+			
+			.ff-notification-container .panel-heading .panel-title{
+				font-size: 1em;
+			}
+			
+			.ff-notification-tabs{
+				margin: 0;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			.ff-notification-content{
+				font-size: .9em;
+			}
+			
+			.ff-notification-content > .panel-body{
+				padding-top: 0;
+			}
+			
+			.ff-notifications-container > .panel-body{
+				padding: 0;
+				
+			}
+			
+			.ff-notifications-container > .panel-heading{
+				border: 1px solid #DDD;
+				border-bottom: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<header role="header">
+			<nav role="navigator" class="navbar navbar-default">
+			    <div class="container-fluid">
+				    <div class="navbar-header">
+						<a class="navbar-brand" href="#">
+							<img src="https://assets.firstfreight.com/logos/demo_Header.png" alt="Home" class="ff-logo">
+						</a>
+				    </div>
+					
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active">
+								<a href="#">
+									<i class="fa fa-home"></i>
+									Home
+								</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-sliders"></i>
+									Manage <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><i class="fa fa-share-alt"></i> Opportunities</a></li>
+									<li><a href="#"><i class="fa fa-flag"></i> Leads</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"><i class="fa fa-users"></i> Contacts</a></li>
+									<li><a href="#"><i class="fa fa-star"></i> Accounts</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"><i class="fa fa-book"></i> Reports</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-bell"></i>
+									Alerts <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><i class="fa fa-calendar"></i> Apple Computer</a></li>
+									<li role="separator" class="divider"></li>
+									
+									<li><a href="#"><i class="fa fa-phone"></i> Dennis Ritchie</a></li>
+									<li role="separator" class="divider"></li>
+									
+									<li><a href="#"><i class="fa fa-tasks"></i> Open Task</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-user"></i>
+									Sean Murray <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><i class="fa fa-lock"></i> Admin</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"><i class="fa fa-calendar"></i> Calendar</a></li>
+									<li><a href="#"><i class="fa fa-cogs"></i> Settings</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"><i class="fa fa-book"></i> Company Directory</a></li>
+									<li><a href="#"><i class="fa fa-question"></i> Support</a></li>
+									<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<section role="main" class="container">
+			<div class="row">
+				
+				<div class="col-lg-8">
+					
+					<!-- TASKS -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										<i class="fa fa-bolt"></i>
+										Priority Tasks
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-condensed">
+											<thead>
+												<tr>
+													<th width="30%">Task</th>
+													<th width="45%">Next Step</th>
+													<th width="25%">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="danger">
+													<td>
+														<i class="fa fa-share-alt"></i>
+														Opportunity Closing
+													</td>
+													<td>
+														<p>Get final details prior to closing opportunity.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-pencil"></i>
+															Update Opp
+														</button>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Received
+													</td>
+													<td>
+														<p>Review Lead details and contact lead sender.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-external-link"></i>
+															Respond To Lead
+														</button>
+													</td>
+												</tr>
+												
+												<tr class="warning">
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Stale
+													</td>
+													<td>
+														<p>Lead is losing qualification status.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-pencil"></i>
+															Update Lead
+														</button>
+													</td>
+												</tr>
+												
+												<tr class="success">
+													<td>
+														<i class="fa fa-share-alt"></i>
+														Opportunity Closing
+													</td>
+													<td>
+														<p>Get final details prior to closing opportunity.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-pencil"></i>
+															Update Opp
+														</button>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Received
+													</td>
+													<td>
+														<p>Review Lead details and contact lead sender.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-external-link"></i>
+															Respond To Lead
+														</button>
+													</td>
+												</tr>
+												
+												<tr class="">
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Stale
+													</td>
+													<td>
+														<p>Lead is losing qualification status.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-pencil"></i>
+															Update Lead
+														</button>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Received
+													</td>
+													<td>
+														<p>Review Lead details and contact lead sender.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-external-link"></i>
+															Respond To Lead
+														</button>
+													</td>
+												</tr>
+												
+												<tr class="">
+													<td>
+														<i class="fa fa-flag"></i>
+														Lead Stale
+													</td>
+													<td>
+														<p>Lead is losing qualification status.</p>
+													</td>
+													<td>
+														<button class="btn btn-primary btn-xs">
+															<i class="fa fa-pencil"></i>
+															Update Lead
+														</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									
+									<div class="pull-right">
+										<a href="#">See more...</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- STATS -->
+					
+					<hr/>
+					<div class="row text-center">
+						<div class="col-lg-3">
+							<h1 class="panel-title" style="font-size: 2em;">
+								$17,320
+							</h1>
+							<h5 class="panel-title" style="font-size: 1em;">Period Revenue</h5>
+						</div>
+						
+						<div class="col-lg-3">
+							<h1 class="panel-title" style="font-size: 2em;">
+								$186,433
+							</h1>
+							<h5 class="panel-title" style="font-size: 1em;">Year Revenue</h5>
+						</div>
+						
+						<div class="col-lg-3">
+							<h1 class="panel-title" style="font-size: 2em;">
+								54.6%
+							</h1>
+							<h5 class="panel-title" style="font-size: 1em;">Lead Success</h5>
+						</div>
+						
+						<div class="col-lg-3">
+							<h1 class="panel-title" style="font-size: 2em;">
+								34.5%
+							</h1>
+							<h5 class="panel-title" style="font-size: 1em;">Company Success</h5>
+						</div>
+					</div>
+					<hr/>
+
+					<!-- GRAPHS -->
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										<i class="fa fa-pie-chart"></i>
+										My Leads Vs. Company Leads
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div id="ff-profit-pie-chart" style="height: 400px; margin: 0 auto"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										<i class="fa fa-bar-chart"></i>
+										Revenue This Year Vs. Last Year
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div id="ff-success-pie-chart" style="height: 400px; margin: 0 auto"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				
+				<div class="col-lg-4">
+
+					<div class="panel panel-default ff-notifications-container">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bell"></i>
+								Notifications
+							</h3>
+						</div>
+						<div class="panel-body">
+							
+							<div class="list-group ff-notification-tabs" id="ff-notification-accordion" role="tablist" aria-multiselectable="true">
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-1" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-calendar"></i>
+													Meeting with <a href="#">Apple Computer</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													<i class="fa fa-warning text-danger"></i>
+													in 30 minutes
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-1" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<h5>Rates and Volumes to Europe</h5>
+											
+											<ul>
+												<li>
+													<label>Opportunity iPads:</label> <em>China USA West</em>
+												</li>
+												<li>
+													<label>Sales Stage:</label>  <em>Final Negotiation</em> 
+												</li>
+											</ul>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-2" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-phone"></i>
+													Call with <a href="#">Dennis Ritchie</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													at 4:30pm
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-2" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-3" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-tasks"></i>
+													Open task
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													due tomorrow
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-3" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-4" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-calendar"></i>
+													Meeting with <a href="#">Brian Krephoff</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													in 4 days
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-4" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-5" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-phone"></i>
+													Call with <a href="#">Dennis Ritchie</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													next week
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-5" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-6" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-calendar"></i>
+													Meeting with <a href="#">Kevin Reddings</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													next week
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-6" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-7" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+												    <i class="fa fa-calendar"></i>
+													Meeting with <a href="#">Brian Krephoff</a>
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													next week
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-7" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="panel panel-default ff-notifications-container">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-tasks"></i>
+								Open Tasks
+							</h3>
+						</div>
+						<div class="panel-body">
+							
+							<div class="list-group ff-notification-tabs" id="ff-notification-accordion" role="tablist" aria-multiselectable="true">
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-10" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+													Send Reports To Toyota
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													<i class="fa fa-warning text-danger"></i>
+													in 1 hour
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-10" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<h5>Rates and Volumes to Europe</h5>
+											
+											<ul>
+												<li>
+													<label>Opportunity iPads:</label> <em>China USA West</em>
+												</li>
+												<li>
+													<label>Sales Stage:</label>  <em>Final Negotiation</em> 
+												</li>
+											</ul>
+										</div>
+								    </div>
+								</div>
+								
+							    <div class="panel panel-default ff-notification-container">
+									<div class="panel-heading ff-notification-tab-trigger" role="tab" data-toggle="collapse" data-parent="#ff-notification-accordion" href="#ff-notification-content-11" aria-expanded="true" aria-controls="collapseOne">
+										<div class="panel-title">
+											<div class="row no-gutter">
+												<div class="col-lg-8">
+													Flying to Stuttgart
+												</div>
+												<div class="col-lg-4 ff-notification-time">
+													at 4:30pm
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								    <div id="ff-notification-content-11" class="panel-collapse collapse ff-notification-content" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<p>more about this notification</p>
+										</div>
+								    </div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="row">
+				
+				<div class="col-lg-12">
+
+				</div>
+				
+			</div>
+		</section>
+		
+		<footer role="footer">
+			
+		</footer>
+		
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	
+		<script>
+			// Load the fonts
+			Highcharts.createElement('link', {
+			   href: '//fonts.googleapis.com/css?family=Unica+One',
+			   rel: 'stylesheet',
+			   type: 'text/css'
+			}, null, document.getElementsByTagName('head')[0]);
+			Highcharts.setOptions({
+			    lang: {
+			        thousandsSep: ','
+			    }
+			});
+			
+			$(function () {
+
+			    $(document).ready(function () {
+					
+					
+					var colors = Highcharts.getOptions().colors,
+					    categories = ['Secured', 'Submitted Not Secured'],
+					    data = [{
+					        y: Math.round((45/77) * 100),
+					        color: colors[0],
+					        drilldown: {
+					            name: 'Mine vs Company',
+					            categories: ['My Secured Leads'],
+					            data: [Math.round((77/578) * 100)],
+					            color: colors[0]
+					        }
+					    },
+					    {
+					        y: Math.round( ( (77-45) / 77) * 100),
+					        color: colors[0],
+					        drilldown: {
+					            name: 'Mine vs Company',
+					            categories: ['Overall Company Leads'],
+					            data: [Math.round( ( (578-77) / 578) * 100)],
+					            color: colors[1]
+					        }
+					    }],
+					    browserData = [],
+					    versionsData = [],
+					    i,
+					    j,
+					    dataLen = data.length,
+					    drillDataLen,
+					    brightness;
+
+
+					// Build the data arrays
+					for (i = 0; i < dataLen; i += 1) {
+
+					    // add browser data
+					    browserData.push({
+					        name: categories[i],
+					        y: data[i].y,
+					        color: data[i].color
+					    });
+
+					    // add version data
+					    drillDataLen = data[i].drilldown.data.length;
+					    for (j = 0; j < drillDataLen; j += 1) {
+					        brightness = 0.2 - (j / drillDataLen) / 5;
+					        versionsData.push({
+					            name: data[i].drilldown.categories[j],
+					            y: data[i].drilldown.data[j],
+					            color: Highcharts.Color(data[i].color).brighten(brightness).get()
+					        });
+					    }
+					}
+	
+
+			        // Build the chart
+			        $('#ff-profit-pie-chart').highcharts({
+				        chart: {
+				            type: 'pie'
+				        },
+				        title: {
+				            text: 'Leads Success Rate'
+				        },
+				        subtitle: {
+				            text: ''
+				        },
+				        yAxis: {
+				            title: {
+				                text: ''
+				            }
+				        },
+				        plotOptions: {
+				            pie: {
+				                shadow: false,
+				                center: ['50%', '50%'],
+			                    allowPointSelect: true,
+			                    cursor: 'pointer',
+			                    dataLabels: {
+			                        enabled: true
+			                    },
+			                    showInLegend: true
+				            }
+				        },
+				        tooltip: {
+				            valueSuffix: '%'
+				        },
+				        series: [{
+				            name: 'My Leads',
+				            data: browserData,
+				            size: '60%',
+				            dataLabels: {
+				                formatter: function () {
+				                    return this.y > 5 ? this.point.name : null;
+				                },
+				                color: '#ffffff',
+				                distance: -30
+				            }
+				        }, {
+				            name: 'Overall Company',
+				            data: versionsData,
+				            size: '80%',
+				            innerSize: '60%',
+				            dataLabels: {
+				                formatter: function () {
+				                    // display only if larger than 1
+				                    return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+				                }
+				            }
+				        }]
+				    });
+					
+					$("#ff-success-pie-chart").highcharts({
+						chart: {
+						    type: 'column'
+						},
+						title: {
+						    text: 'Revenue'
+						},
+						subtitle: {
+						    text: ''
+						},
+						xAxis: {
+						    categories: [
+						        'Prior Period',
+						        'Current Period',
+						        'Prior Year',
+						        'Current Year'
+						    ],
+						    crosshair: true
+						},
+						yAxis: {
+						    min: 0,
+						    title: {
+						        text: 'Total Dollars'
+						    }
+						},
+						tooltip: {
+						    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+						        '<td style="padding:0"><b>${point.y}</b></td></tr>',
+						    footerFormat: '</table>',
+						    shared: true,
+						    useHTML: true
+						},
+						plotOptions: {
+						    column: {
+						        pointPadding: 0.2,
+						        borderWidth: 0
+						    }
+						},
+						series: [{
+						    name: 'Revenue',
+						    data: [176276, 36577, 578116, 78241]
+
+						}]
+					});
+			    });
+			});
+		</script>
+			
+			
+			
+		<script>
+		$(function(){
+			
+		})
+		</script>
+	</body>
+</html>
