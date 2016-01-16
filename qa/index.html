@@ -9,8 +9,15 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css"/>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/modernizr.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 		
@@ -25,6 +32,19 @@
 				margin-bottom: 2em;
 			}
 			
+			table{
+				width: 100%;
+			}
+			
+			.qac-generated-report{
+				font-family: 'Libre Baskerville', serif;
+			}
+			
+			h1,h2,h3,h4,h5,h6{
+				font-family: 'Alegreya', serif;
+				font-family: 'Merriweather', serif;
+			}
+			
 			.qac-report-failed-item-container{
 				padding: .5em 1em;
 				
@@ -35,8 +55,22 @@
 				border-radius: 5px;
 			}
 			
+			.qac-screens-listing-heading{
+				background: #EEE;
+			    border-top-right-radius: 5px;
+			    border-top-left-radius: 5px;
+				border: 1px solid #e6e6e6;
+			    padding: .5em 1.3em .1em 1.2em;
+			}
+			
+			.qac-screens-listing-heading h5{
+			    letter-spacing: 1px;
+			    font-weight: 600;
+				color: #222;
+			}
+			
 			.qac-screen-component-header{
-				background: #3E3E3E;
+/*				background: #3E3E3E;*/
 			    font-size: .75rem;
 			}
 			
@@ -47,7 +81,7 @@
 			}
 			
 			.qac-screen-object-data-header{
-				background: #3E3E3E;
+				border: 1px solid #e6e6e6
 			}
 			
 			.qac-screen-object-data-header a{
@@ -55,32 +89,50 @@
 			}
 			
 			.qac-screen-component-item{
-				background: #6E6E6E;
+/*				background: #6E6E6E;*/
 				
 			}
 			
 			.qac-screen-object-data-header{
-				background: #6E6E6E;
+/*				background: #6E6E6E;*/
 			}
 			
-			.qac-screen-group-header{
-				background: black;
-				border: none;
+			.accordion-title.qac-screen-group-header{
+/*				background: black;*/
+/*				border: none;*/
+/*				border-bottom-width: 1px;*/
 			}
 			
-			.accordion-content,.tabs-panel{
+			.qac-checklist-screens-container,#qac-checklist-container{
+/*				padding: 0;*/
+			}
+			
+			.qac-checklist-screen-testcases-container{
 				padding: 0;
+/*				border-bottom: none;*/
 			}
 			
-			.tabs-content{
-				border: none;
+			.qac-checklist-groups-list{
+/*				border: none;*/
 			}
 			
-			.callout,.button-group{
+			.qac-container--base,.button-group{
 				margin-bottom: 0;
 				border-top: none;
 				border-right: none;
 				border-left: none;
+			}
+			
+			.qac-container--base{
+				border-bottom: none;
+			}
+			
+			.select2-selection.select2-selection--single{
+				height: 2.5em;
+			}
+			
+			.select2.select2-container.select2-container--default.select2-container--below{
+				margin-bottom: 1.5em;
 			}
 			
 			@media print
@@ -98,750 +150,206 @@
 		</style>
 		
 		<script>
-			window["qac"] = {
-				"data": {
-					"screens": {
-						
-						/**
-						 * System
-						 */
-						
-						"system-main-menu": {
-							"id": "system-main-menu",
-							"type": "screen",
-							"level": 0,
-							"name": "Main Menu",
-							"group": "System"
-						},
-						"system-contact-select": {
-							"id": "system-contact-select",
-							"type": "screen",
-							"level": 2,
-							"name": "Contact Select",
-							"group": "System"
-						},
-						
-						/**
-						 * Dashboard
-						 */
-						
-						"dashboard-main": {
-							"id": "dashboard-main",
-							"type": "screen",
-							"level": 0,
-							"name": "Main",
-							"group": "Dashboard"
-						},
-						
-						/**
-						 * Opportunities
-						 */
-						
-						"opportunities-list": {
-							"id": "opportunities-list",
-							"type": "screen",
-							"level": 0,
-							"name": "List",
-							"group": "Opportunities"
-						},
-						"opportunities-create": {
-							"id": "opportunities-create",
-							"type": "screen",
-							"level": 1,
-							"name": "Create",
-							"group": "Opportunities"
-						},
-						"opportunities-details": {
-							"id": "opportunities-details",
-							"type": "screen",
-							"level": 1,
-							"name": "Details",
-							"group": "Opportunities"
-						},
-						"opportunities-lanes": {
-							"id": "opportunities-lanes",
-							"type": "screen",
-							"level": 1,
-							"name": "Lanes",
-							"group": "Opportunities"
-						},
-						"opportunities-contacts": {
-							"id": "opportunities-contacts",
-							"type": "screen",
-							"level": 1,
-							"name": "Contacts",
-							"group": "Opportunities"
-						},
-						"opportunities-activities": {
-							"id": "opportunities-activities",
-							"type": "screen",
-							"level": 1,
-							"name": "Activities",
-							"group": "Opportunities"
-						},
-						
-						/**
-						 * Accounts
-						 */
-						
-						"accounts-list": {
-							"id": "accounts-list",
-							"type": "screen",
-							"level": 0,
-							"name": "List",
-							"group": "Accounts"
-						},
-						"accounts-create": {
-							"id": "accounts-create",
-							"type": "screen",
-							"level": 1,
-							"name": "Create",
-							"group": "Accounts"
-						},
-						"accounts-details": {
-							"id": "accounts-details",
-							"type": "screen",
-							"level": 1,
-							"name": "Details",
-							"group": "Accounts"
-						},
-						"accounts-other": {
-							"id": "accounts-other",
-							"type": "screen",
-							"level": 1,
-							"name": "Other",
-							"group": "Accounts"
-						},
-						"accounts-contacts": {
-							"id": "accounts-contacts",
-							"type": "screen",
-							"level": 1,
-							"name": "Contacts",
-							"group": "Accounts"
-						},
-						"accounts-opportunities": {
-							"id": "accounts-opportunities",
-							"type": "screen",
-							"level": 1,
-							"name": "Opportunities",
-							"group": "Accounts"
-						},
-						
-						/**
-						 * Contacts
-						 */
-						
-						"contacts-list": {
-							"id": "contacts-list",
-							"type": "screen",
-							"level": 0,
-							"name": "List",
-							"group": "Contacts"
-						},
-						"contacts-create": {
-							"id": "contacts-create",
-							"type": "screen",
-							"level": 1,
-							"name": "Create",
-							"group": "Contacts"
-						},
-						"contacts-details": {
-							"id": "contacts-details",
-							"type": "screen",
-							"level": 1,
-							"name": "Details",
-							"group": "Contacts"
-						},
-						"contacts-opportunities": {
-							"id": "contacts-opportunities",
-							"type": "screen",
-							"level": 1,
-							"name": "Opportunities",
-							"group": "Contacts"
-						},
-						
-						/**
-						 * Leads
-						 */
-						
-						"leads-list": {
-							"id": "leads-list",
-							"type": "screen",
-							"level": 0,
-							"name": "List",
-							"group": "Leads"
-						},
-						"leads-create": {
-							"id": "leads-create",
-							"type": "screen",
-							"level": 1,
-							"name": "Create",
-							"group": "Leads"
-						},
-						"leads-details": {
-							"id": "leads-details",
-							"type": "screen",
-							"level": 1,
-							"name": "Details",
-							"group": "Leads"
-						},
-						"leads-freight": {
-							"id": "leads-freight",
-							"type": "screen",
-							"level": 1,
-							"name": "Freight",
-							"group": "Leads"
-						},
-						"leads-contacts": {
-							"id": "leads-contacts",
-							"type": "screen",
-							"level": 1,
-							"name": "Contacts",
-							"group": "Leads"
-						},
-						"leads-opportunities": {
-							"id": "leads-opportunities",
-							"type": "screen",
-							"level": 1,
-							"name": "Opportunities",
-							"group": "Leads"
-						},
-						
-						/**
-						 * My Profile
-						 */
-						
-						"my-profile-main": {
-							"id": "my-profile-main",
-							"type": "screen",
-							"level": 0,
-							"name": "Main",
-							"group": "My Profile"
-						},
-						
-						/**
-						 * Sync
-						 */
-						
-						"sync-main": {
-							"id": "sync-main",
-							"type": "screen",
-							"level": 0,
-							"name": "Main",
-							"group": "Sync"
-						},
-						
-						/**
-						 * About
-						 */
-						
-						"about-main": {
-							"id": "about-main",
-							"type": "screen",
-							"level": 0,
-							"name": "Main",
-							"group": "About"
-						},
-					},
-					
-					"objects": {
-						"Opportunity": {
-							"id": "opportunity",
-							"name": "Opportunity",
-							"properties": {
-								"company-name": {
-									"id": "company-name",
-									"name": "Company Name",
-									"type": "input-search",
-									"placeholder": "",
-									"validations": ["required"],
-									"group": false,
-									"displayed": true,
-									"editable": true,
-									"screens": ["opportunities-details", "opportunities-create"]
-								}
-							}
-						}
-					},
-					
-					"components": {
-						"list": {
-							"id": "list",
-							"name": "List Component",
-							"screens": {
-								"system-contact-select": {
-									"state": "inline"
-								}, 
-								"dashboard": {
-									"state": "inline"
-								}, 
-								"opportunities-list": {
-									"state": "full-screen"
-								}, 
-								"opportunities-lanes": {
-									"state": "normal"
-								}, 
-								"opportunities-contacts": {
-									"state": "normal"
-								}, 
-								"opportunities-activities": {
-									"state": "normal"
-								}, 
-								"accounts-list": {
-									"state": "full-screen"
-								}, 
-								"accounts-contacts": {
-									"state": "normal"
-								},
-								"accounts-opportunities": {
-									"state": "normal"
-								},
-								"contacts-list": {
-									"state": "full-screen"
-								},
-								"contacts-opportunities": {
-									"state": "normal"
-								},
-								"leads-list": {
-									"state": "full-screen"
-								},
-								"leads-contacts": {
-									"state": "normal"
-								},
-								"leads-opportunities": {
-									"state": "normal"
-								}
-							}
-						},
-						
-						"navigation-bar": {
-							"id": "navigation-bar",
-							"name": "Navigation Bar Component",
-							"screens": {
-								"system-contact-select": {
-									"state": "sublevel-back-only"
-								}, 
-								"dashboard-main": {
-									"state": "add"
-								}, 
-								"opportunities-list": {
-									"state": "add"
-								}, 
-								"opportunities-create": {
-									"state": "sublevel-save"
-								}, 
-								"opportunities-details": {
-									"state": "sublevel-edit"
-								}, 
-								"opportunities-lanes": {
-									"state": "sublevel-add"
-								}, 
-								"opportunities-contacts": {
-									"state": "sublevel-add"
-								}, 
-								"opportunities-activities": {
-									"state": "sublevel-add"
-								}, 
-								"accounts-list": {
-									"state": "add"
-								}, 
-								"accounts-create": {
-									"state": "sublevel-save"
-								},
-								"accounts-details": {
-									"state": "sublevel-edit"
-								},
-								"accounts-other": {
-									"state": "sublevel-edit"
-								},
-								"accounts-contacts": {
-									"state": "sublevel-add"
-								},
-								"accounts-opportunities": {
-									"state": "sublevel-add"
-								},
-								"contacts-list": {
-									"state": "add"
-								},
-								"contacts-create": {
-									"state": "sublevel-save"
-								},
-								"contacts-details": {
-									"state": "sublevel-edit"
-								},
-								"contacts-opportunities": {
-									"state": "sublevel-add"
-								},
-								"leads-list": {
-									"state": "add"
-								},
-								"leads-create": {
-									"state": "sublevel-save"
-								},
-								"leads-details": {
-									"state": "sublevel-edit"
-								},
-								"leads-freight": {
-									"state": "sublevel-edit"
-								},
-								"leads-contacts": {
-									"state": "sublevel-add"
-								},
-								"leads-opportunities": {
-									"state": "sublevel-add"
-								},
-								"my-profile-main": {
-									"state": "add"
-								},
-								"sync-main": {
-									"state": "add"
-								},
-								"about-main": {
-									"state": "add"
-								}
-							}
-						}
-					},
-					
-					"cases": [
-						
-						/**
-						 * Main Menu
-						 */
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Open by menu button in top left corner when closed",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Close by menu button in top left corner when open",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Open by swipe when closed",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Close by swipe when open",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Close by clicking outside of menu (click does not propagate outside of menu)",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Current screen shows active in menu",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting menu item goes to expected screen",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting menu item closes menu",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting menu item but not fully engaging highlights menu item",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting profile avatar goes to My Profile screen",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "If menu list overflows screen height, scrolling is enabled",
-							"screens": ["system-main-menu"]
-						},
-						
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "When open, only ¾’ths of screen is consumed by menu",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Profile data container consumes ⅓ of screen height",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Profile data container is centered",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Profile data container has light blue background",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Profile data avatar image is set to correct resolution for screen size",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Menu items are capitalized",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Menu item have icons",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Menu item icons are correct for their menu item",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Menu item icons are unique",
-							"screens": ["system-main-menu"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Menu item icons are correct size",
-							"screens": ["system-main-menu"]
-						},
-						
-						/**
-						 * Contact Select
-						 */
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting a contact in the list highlights the item in order to move between lists",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting an item that has already been selected will unselect that item",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Selecting another item unselects previously selected items",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Pressing “Add” control option when an item is selected in the items available list moves it to the items selected list",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Pressing “Add” control option when an item isn’t selected does nothing",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Pressing “Remove” control option when an item is selected in the items selected list moves it to the items available list",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Pressing “Remove” control option when an item isn’t selected does nothing",
-							"screens": ["system-contact-select"]
-						},
-						
-						
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Buttons have light blue background color and correct icons",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "List controls show option to add or delete a list item",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "List shows a maximum of 15 items and overflow initializes scrolling",
-							"screens": ["system-contact-select"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Buttons have light blue background color and correct icons",
-							"screens": ["system-contact-select"]
-						},
-						
-						/**
-						 * Nav Bar Component
-						 */
-						
-						{
-							"type": "check",
-							"group": "Functionality",
-							"question": "Header has Back button that leads to previous expected screen",
-							"components": {
-								"navigation-bar": ["sublevel-back-only", "sublevel-add", "sublevel-edit", "sublevel-save"]
-							}
-						},
-						
-						/**
-						 * List Component
-						 */
-						
-						// {
-						// 	"type": "check",
-						// 	"group": "Functionality",
-						// 	"question": "",
-						// 	"components": {
-						// 		"list": ["normal"]
-						// 	}
-						// },
-						
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Empty result sets show an empty message",
-							"components": {
-								"list": ["inline", "normal", "full-screen"]
-							}
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Empty message has light blue font color",
-							"components": {
-								"list": ["inline", "normal", "full-screen"]
-							}
-						},
-						// {
-						// 	"type": "check",
-						// 	"group": "Aesthetic & Layout",
-						// 	"question": "",
-						// 	"components": {
-						// 		"list": ["normal"]
-						// 	}
-						// },
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "List headers are bold and padded",
-							"components": {
-								"list": ["inline"]
-							}
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "List respects data limit of 10 maximum rows and overflow initializes scrolling",
-							"components": {
-								"list": ["inline"]
-							}
-						},
-						
-						/**
-						 * Opportunities
-						 */
-						
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Primary header left column is in larger font size",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Primary header left column is bold and in light blue font color",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Primary header right column Sales Stage bubble is correct color and has contrasting font color",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Secondary header left column is in light grey font color",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Secondary header right column in in light grey font color",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Third header left column is bold and in light blue font color",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Third header right column has Total Revenue and is currency formatted",
-							"screens": ["opportunities-details"]
-						},
-						{
-							"type": "check",
-							"group": "Aesthetic & Layout",
-							"question": "Third header right column is bold and in light grey font color",
-							"screens": ["opportunities-details"]
-						}
-						
-						
-					]
-				}
-			};
 			
-			var QACApp = angular.module("qaChecklistApp", []);
+			var QACApp = angular.module("qaChecklistApp", ["datatables"]);
 			
 			QACApp.value("mode", "collection");
+
+			QACApp.value("appData", {
+		        "screenGroups":{  
+		            "example":{  
+		                "id":"example",
+		                "label":"Example Screen Group",
+						"type":"group"
+		            }
+				},
+		        "screens":{  
+		            "example":{  
+		                "id":"example",
+		                "type":"screen",
+		                "level":0,
+		                "label":"Example Screen",
+		                "group":"example"
+		            }
+				},
+		        "objects":{  
+		            "example":{  
+		                "id":"example",
+		                "label":"Example Object",
+		                "properties":{  
+		                    "example-property":{  
+		                        "id":"example-property",
+		                        "label":"Example Property",
+		                        "key":"exampleProperty",
+		                        "type":"input-search",
+		                        "placeholder":"example placeholder",
+		                        "validations":[  
+		                            "required"
+		                        ],
+		                        "group":false,
+		                        "displayed":true,
+		                        "editable":true,
+		                        "screens":[  
+		                            "example"
+		                        ]
+		                    }
+		                }
+		            }
+		        },
+		        "components":{  
+		            "example":{  
+		                "id":"example",
+		                "label":"Example Component",
+		                "screens":{  
+		                    "example":{  
+		                        "state":"example-state"
+		                    }
+						}
+					}
+				},
+		        "cases":{
+		            "example": {  
+		                "type":"check",
+		                "group":"Example Test Case Group",
+		                "question":"Example Test Case Question...",
+		                "screens":[  
+		                    "example"
+		                ]
+		            }
+				}
+			});
 			
 			QACApp.value("qaObjects", {});
 			QACApp.value("qaObjectProperties", {});
+			QACApp.value("qaObjectPropertyTypes", {
+				"input-search": {
+					"id": "input-search",
+					"label": "Input Search"
+				}
+			});
 			QACApp.value("screens", {});
+			QACApp.value("screenGroups", {});
 			QACApp.value("testCases", []);
 			QACApp.value("testCaseComponents", {});
+			
+				  
+			QACApp.filter("cleanid", function() {
+				return function(input) {
+					return input && input.toLowerCase().replace(/\s+/gim,'-').replace(/[^\w-]/gim,'') || input;
+				}
+			});
+			
+			QACApp.factory("TrelloManager", ["$rootScope", "TestCaseResultsManager", function TrelloManagerFactory($rootScope, TestCaseResultsManager) {
+				var _manager = {};
+				
+				return _.extendOwn( _manager, {
+					"boards": {},
+					
+					"getBoards": function(){
+						return Trello.get("/member/me/boards", function(data){
+							
+							_.each(data, function(boardData){
+								_manager.addBoard(boardData);
+							});
+							
+							$rootScope.$broadcast("trello.boards.loaded", _manager);
+						});
+					},
+					"addBoard": function(board){
+						var newBoard = {
+							"name": board.name,
+							"id": board.id,
+							"lists": {}
+						};
+						
+						_manager.boards[ newBoard.id ] = newBoard;
+						
+						_manager.getBoardLists(newBoard);
+						
+						return newBoard;
+					},
+					"getBoardLists": function(board){
+						return Trello.get("/boards/"+board.id+"/lists", function(data){
+							
+							_.each(data, function(listData){
+								_manager.addBoardList(listData);
+							});
+							
+							$rootScope.$broadcast("trello.boards.lists.loaded", _manager);
+						});
+					},
+					"addBoardList": function(list){
+						var newList = {
+							"name": list.name,
+							"id": list.id,
+							"board": list.idBoard
+						};
+						
+						_manager.boards[ newList.board ].lists[ newList.id ] = newList;
+						
+						return newList;
+					},
+					"authorize": function(){
+						Trello.authorize({
+							"type": "popup",
+							"name": "QA Checklist",
+							"scope": {
+							    "read": true,
+							    "write": true
+							},
+							"expiration": "never",
+							"success": function(data){
+								
+								_manager.getBoards();
+								
+								$rootScope.$broadcast("trello.authorized", _manager);
+							}
+						});
+					},
+					
+					"createTrelloResultsChecklist": function(list){
+						return Trello.post("/cards", {
+							"idList": list.id,
+							"name": "QA Checklist Results",
+							"desc": "Parsed results from today."
+						}, function(card){
+							_manager.resultCard = card;
+							
+							Trello.post("/checklists", {
+								"idCard": card.id,
+								"name": "Failed"
+							}, function(checklist){
+								_manager.resultChecklist = checklist;
+
+								_.each(TestCaseResultsManager.failing, function(tcResult){
+									var clName = "["+tcResult.screen.group+" - "+tcResult.screen.label+"] - ";
+									
+									if (tcResult.testCase.group){
+										clName += tcResult.testCase.group+" -  ";
+									}
+									
+									if (tcResult.testCase.components){
+										clName += "{"+_.keys(tcResult.testCase.components).join(",")+"} ";
+									}
+									
+									clName += tcResult.testCase.question;
+									
+									if (tcResult.testCase.comments){
+										clName += " :: ("+tcResult.comments+")";
+									}
+									
+									Trello.post("/checklists/"+checklist.id+"/checkItems", {
+		   								"name": clName
+		   							});
+									
+									$("#qac-publish-modal").foundation("close");
+									$("#qac-publish-success-modal").foundation("open");
+								});
+							});
+						});
+					}
+				});
+			}]);
 
 			QACApp.factory("TestCaseResultsManager", function TestCaseResultsManagerFactory() {
 				return {
@@ -877,21 +385,40 @@
 			});
 			
 			QACApp.factory("QAObjectProperty", function QAObjectPropertyFactory() {
-			
+				var _oprops = {
+					"id": null,
+					"label": null,
+					"key": null,
+					"type": null,
+					"placeholder": null,
+					"validations": [],
+					"group": null,
+					"displayed": null,
+					"editable": null,
+					"screens": []
+				};
+				
 				function QAObjectProperty(data) {
-					_.extendOwn( this, data );
+					_.extendOwn( this, _oprops, data );
 				}
 				
 				return QAObjectProperty;
 			});
 			
 			QACApp.factory("QAObject", ["QAObjectProperty", "qaObjectProperties", "screens", function QAObjectFactory(QAObjectProperty, qaObjectProperties, screens) {
-			
+				var _oprops = {
+					"id": null,
+					"type": null,
+					"level": 0,
+					"label": null,
+					"group": null
+				};
+				
 				function QAObject(data) {
 					var _this = this;
 					var objectProperties = {};
 					
-					_.extendOwn( this, data );
+					_.extendOwn( this, _oprops, data );
 					
 					_.each( this.properties, function(propertyData, propertyDataKey){
 						var newQAObjectProperty = new QAObjectProperty(propertyData);
@@ -921,7 +448,7 @@
 							if ( !(_this.id in checklistScreen.objects) ){
 								checklistScreen.objects[ _this.id ] = {
 									"id": _this.id,
-									"name": _this.name,
+									"label": _this.label,
 									"properties": {}
 								};
 							}
@@ -937,18 +464,29 @@
 
 			
 			QACApp.factory("TestCase", function TestCaseFactory() {
-			
+				var _oprops = {
+					"type": null,
+					"group": null,
+					"question": null,
+					"screens": []
+				};
+				
 				function TestCase(data) {
-					_.extendOwn( this, data );
+					_.extendOwn( this, _oprops, data );
 				}
 				
 				return TestCase;
 			});
 			
 			QACApp.factory("TestCaseComponent", ["testCases", function TestCaseComponentFactory(testCases) {
-			
+				var _oprops = {
+					"id": null,
+					"label": null,
+					"screens": {}
+				};
+				
 				function TestCaseComponent(data) {
-					_.extendOwn( this, data );
+					_.extendOwn( this, _oprops, data );
 				}
 				
 				TestCaseComponent.prototype.getTestCases = function(checklistScreen){
@@ -968,9 +506,16 @@
 				var types = ["screen"];
 
 				function ChecklistScreen(data) {
-					_.extendOwn( this, data );
+					_.extendOwn( this, {
+						"id": null,
+						"type": null,
+						"level": 0,
+						"label": null,
+						"group": null
+					}, data );
 					
 					this.results = {};
+					
 				}
 				
 				
@@ -1011,7 +556,7 @@
 						if ( !(testCase.group in testCaseGroups) ){
 							var groupID = testCase.group.toLowerCase().replace(/\s+/gim,'-').replace(/[^\w-]/gim,'');
 							testCaseGroups[ testCase.group ] = {
-								"name": testCase.group,
+								"label": testCase.group,
 								"id": groupID,
 								"testCases": [],
 								"components": {}
@@ -1030,7 +575,7 @@
 							if ( !(testCase.group in testCaseGroups) ){
 								var groupID = testCase.group.toLowerCase().replace(/\s+/gim,'-').replace(/[^\w-]/gim,'');
 								testCaseGroups[ testCase.group ] = {
-									"name": testCase.group,
+									"label": testCase.group,
 									"id": groupID,
 									"testCases": [],
 									"components": {}
@@ -1039,7 +584,7 @@
 							
 							if ( !(testCaseComponent.id in testCaseGroups[ testCase.group ].components ) ){
 								testCaseGroups[ testCase.group ].components[ testCaseComponent.id ] = {
-									"name": testCaseComponent.name,
+									"label": testCaseComponent.label,
 									"id": testCaseComponent.id,
 									"testCases": []
 								};
@@ -1055,68 +600,79 @@
 				return ChecklistScreen;
 			}]);
 			
-			QACApp.controller("ScreenListController", ["$scope", "ChecklistScreen", "TestCase", "TestCaseComponent", "QAObject", "screens", "testCases", "testCaseComponents", "qaObjects", function ScreenListController($scope, ChecklistScreen, TestCase, TestCaseComponent, QAObject, screens, testCases, testCaseComponents, qaObjects) {
-
-				$scope.loadData = function () {
-					var screensData = window.qac.data.screens;
-					var testCasesData = window.qac.data.cases;
-					var testCaseComponentsData = window.qac.data.components;
-					var qaObjectsData = window.qac.data.objects;
+			
+			/**
+			 * Controllers
+			 */
+			QACApp.controller("DataLoaderController", ["$rootScope", "$scope", "appData", "ChecklistScreen", "TestCase", "TestCaseComponent", "QAObject", "screens", "screenGroups", "testCases", "testCaseComponents", "qaObjects", function DataLoaderController($rootScope, $scope, appData, ChecklistScreen, TestCase, TestCaseComponent, QAObject, screens, screenGroups, testCases, testCaseComponents, qaObjects) {
 				
+				$scope.requestURI = "ff-package.json";
+				
+				$scope.loadData = function () {					
+					var screensData = appData.screens;
+					var screenGroupsData = appData.screenGroups;
+					var testCasesData = appData.cases;
+					var testCaseComponentsData = appData.components;
+					var qaObjectsData = appData.objects;
+
 					_.each( screensData, function (screenData) {
 						var newChecklistScreen = new ChecklistScreen( screenData );
-				
-						screens[ newChecklistScreen.id ] = newChecklistScreen;
+
+						if (!screenGroups[ newChecklistScreen.group ]){
+							screenGroups[ newChecklistScreen.group ] = _.extend({
+								"screens": {}
+							}, screenGroupsData[ newChecklistScreen.group ]);
+						}
+
+						screenGroups[ newChecklistScreen.group ].screens[ newChecklistScreen.id ] = screens[ newChecklistScreen.id ] = newChecklistScreen;
 					});
-				
+
 					_.each( testCasesData, function (testCaseData) {
 						var newTestCase = new TestCase( testCaseData );
-				
+
 						testCases.push( newTestCase );
 					});
-				
+
 					_.each( testCaseComponentsData, function (testCaseComponentData) {
 						var newTestCaseComponent = new TestCaseComponent( testCaseComponentData );
-				
+
 						testCaseComponents[ newTestCaseComponent.id ] = newTestCaseComponent;
 					});
-					
+
 					_.each( qaObjectsData, function (qaObjectData) {
 						var newQAObject = new QAObject( qaObjectData );
-						
+
 						newQAObject.updateScreenPropertyMapping();
-						
+
 						qaObjects[ newQAObject.id ] = newQAObject;
 					});
 					
+					$rootScope.$broadcast("app.data.update", appData);
 				}
-								
-				$scope.setupGroups = function () {
-					var screenGroups = {};
 				
-					_.each( screens, function (checklistScreen) {
-						if ( !(checklistScreen.group in screenGroups) ){
-							var groupID = checklistScreen.group.toLowerCase().replace(/\s+/gim,'-').replace(/[^\w-]/gim,'');
-							screenGroups[ checklistScreen.group ] = {
-								"name": checklistScreen.group,
-								"id": groupID,
-								"screens": {}
-							};
-						}
-				
-						screenGroups[ checklistScreen.group ].screens[ checklistScreen.id ] = checklistScreen;
+				$scope.makeDataRequest = function () {
+					$.get( $scope.requestURI ).done( function (data) {
+						_.extendOwn(appData, data.data);
+						
+						$scope.loadData();
 					});
-					
-					$scope.groups = screenGroups;
-
-					return screenGroups;
 				};
+
+			}]);
+			
+			QACApp.controller("ScreenListController", ["$scope", "screenGroups", function ScreenListController($scope, screenGroups) {
+				
+				$scope.groups = screenGroups;
+				
+				$scope.$on("app.data.update", function(e, appData){
+					$scope.$apply();
+				});
 			}]);
 			
 			
 			
 			QACApp.controller("TestCaseController", ["$scope", "TestCaseResult", "TestCaseResultsManager", function TestCaseController($scope, TestCaseResult, TestCaseResultsManager) {
-				
+
 				$scope.testCaseResult = new TestCaseResult({
 					"testCase": $scope.testCase,
 					"screen": $scope.screen,
@@ -1124,7 +680,6 @@
 				});
 				
 				$scope.commenting = false;
-				$scope.testo = "wuuut";
 				
 				TestCaseResultsManager.results.push( $scope.testCaseResult );
 				
@@ -1139,15 +694,23 @@
 				$scope.toggleComments = function(){
 					$scope.commenting = !$scope.commenting;
 				}
+				
+				$scope.$on("app.data.update", function(e, appData){
+					$scope.$apply();
+				});
 			}]);
 			
-			QACApp.controller("ReportResultsController", ["$scope", "TestCaseResultsManager", function TestCaseController($scope, TestCaseResultsManager) {
+			QACApp.controller("ReportResultsController", ["$scope", "TestCaseResultsManager", function ReportResultsController($scope, TestCaseResultsManager) {
 				
 				$scope.totals = TestCaseResultsManager;
+				
+				$scope.$on("app.data.update", function(e, appData){
+					$scope.$apply();
+				});
 			}]);
  			   
 			   
-			QACApp.controller("ModeController", ["$rootScope", "$scope", "mode", "TestCaseResultsManager", function ModeController($rootScope, $scope, mode, TestCaseResultsManager) {
+			QACApp.controller("ModeController", ["$rootScope", "$scope", "mode", "TestCaseResultsManager", "TrelloManager", function ModeController($rootScope, $scope, mode, TestCaseResultsManager, TrelloManager) {
 				
 				$scope.mode = mode;
 				
@@ -1191,17 +754,371 @@
 				$scope.startCollection = function(){
 					$rootScope.$broadcast("mode", "collection");
 				}
+				
+				/**
+				 * @todo Move this to at Trello Controller
+				 */
+				$scope.publishReport = function(){
+					TrelloManager.authorize();
+				}
 			}]);
 			
 			QACApp.controller("ReportController", ["$scope", "TestCaseResultsManager", function ReportController($scope, TestCaseResultsManager) {
 				$scope.postedDate = new Date();
 				$scope.results = TestCaseResultsManager;
+				
+				$scope.$on("app.data.update", function(e, appData){
+					$scope.$apply();
+				});
+			}]);
+
+
+			QACApp.controller("PublishController", ["$scope", "$timeout", "TrelloManager", function PublishController($scope, $timeout, TrelloManager) {
+				
+				$scope.boards = TrelloManager.boards;
+				
+				$scope.selectList = function(list){
+					TrelloManager.createTrelloResultsChecklist(list);
+				}
+				
+				$scope.initializeDrillDown = function(){
+					$timeout(function(){
+						var elem = new Foundation.Drilldown( $("#qac-board-listing") );
+						
+					});
+				}
+				
+				$scope.$on("trello.authorized", function(e, data){
+					$("#qac-publish-modal").foundation("open");
+				});
+				
+				$scope.$on("trello.boards.lists.loaded", function(e, data){
+					$scope.$apply();
+					
+					$("#qac-board-listing").foundation();
+				});
 			}]);
 			
 			
+			
+			
+			
+			/**
+			 * Screen Management
+			 */
+			
+			QACApp.factory("screenToEdit", ["$rootScope", "$filter", "screenGroups", function screenToEditFactory($rootScope, $filter, screenGroups) {
+				var opts = {
+					"selected": null,
+					"selectedGroup": null,
+					"selectedID": null
+				};
+				
+				$rootScope.$on("screen.update.load", function(e, selectedScreen){
+					opts.selected = selectedScreen;
+					opts.selectedGroup = screenGroups[ selectedScreen.group ];
+					opts.selectedID = selectedScreen.id;
+					
+					var selectData = _.map( screenGroups, function(screenGroup){
+						return {
+							"text": screenGroup.label,
+							"id": screenGroup.id
+						};
+					});
+					
+					$("#qac-screen-management-group").select2({
+						"placeholder": "Create new group or select one below",
+						"allowClear": true,
+						"tags": true,
+						"data": selectData || null
+					}).on("change", function(e){
+						var newId = $filter("cleanid")( $(this).val() );
+						
+						if (newId == opts.selected.group){
+							return;
+						}
+						
+						var oldScreenGroup = screenGroups[ opts.selected.group ];
+						var newScreenGroup = screenGroups[ newId ];
+
+						if (oldScreenGroup){
+							delete oldScreenGroup.screens[ opts.selected.id ];
+						}
+						
+						if (!newScreenGroup){
+							newScreenGroup = screenGroups[ newId ] = {
+								"screens": {},
+								"id": newId,
+								"label": $(this).find("option:selected").text()
+							}
+						}
+
+						newScreenGroup.screens[ opts.selected.id ] = opts.selected;
+
+						opts.selected.group = newId;
+					});
+				});
+				
+				return opts;
+			}]);
+			
+			QACApp.controller("ScreensTabContainerController", ["$rootScope", "$scope", "screens", "screenGroups", "screenToEdit", "ChecklistScreen", function ScreensTabContainerController($rootScope, $scope, screens, screenGroups, screenToEdit, ChecklistScreen) {
+				$scope.screensList = screens;
+				$scope.screenGroups = screenGroups;
+				
+				$scope.setScreenToEdit = function(selectedScreen){
+					if (!selectedScreen){
+						selectedScreen = new ChecklistScreen();
+					}
+					
+					$rootScope.$broadcast("screen.update.load", selectedScreen);
+					
+				}
+				
+			}]);
+			
+			QACApp.controller("ScreenEditController", ["$rootScope", "$filter", "$scope", "screens", "screenToEdit", "screenGroups", function ScreenEditController($rootScope, $filter, $scope, screens, screenToEdit, screenGroups) {
+				$scope.screen = screenToEdit;
+				
+				$scope.allGroups = screenGroups;
+				
+				$scope.$watch("screen.selected.label", function(newValue, oldValue){
+					if (screenToEdit.selected){
+						if (!screenToEdit.selected.id){
+							screenToEdit.selectedID = $filter("cleanid")(newValue);
+						}
+					}
+					
+				});
+				
+				$scope.updateScreenFromEdits = function(){
+					
+					/**
+					 * New screens won't have an ID, so we process them externally within 
+					 * the "screenToEdit" object.
+					 */
+					if ( !screenToEdit.selected.id){
+						if (screenToEdit.selectedID) {
+							if ( !(screenToEdit.selectedID in screens) ){
+								screenToEdit.selected.id = screenToEdit.selectedID;
+								screens[ screenToEdit.selected.id ] = screenToEdit.selected;
+							} else {
+								throw "Screen ID already exists";
+							}
+						} else {
+							throw "Screen must have an ID set";
+						}
+					}
+				};
+			}]);
+			
+			
+			
+			
+			/**
+			 * Component Management
+			 */
+			QACApp.factory("componentToEdit", ["$rootScope", "testCases", function componentToEditFactory($rootScope, testCases) {
+				var opts = {
+					"selected": null,
+					"selectedID": null
+				};
+				
+				$rootScope.$on("component.update.load", function(e, selectedTestCaseComponent){
+					opts.selected = selectedTestCaseComponent;
+					opts.selectedID = selectedTestCaseComponent.id;
+				});
+				
+				return opts;
+			}]);
+			
+			
+			QACApp.controller("ComponentsTabContainerController", ["$rootScope", "$scope", "testCaseComponents", "componentToEdit", "TestCaseComponent", function ComponentsTabContainerController($rootScope, $scope, testCaseComponents, componentToEdit, TestCaseComponent) {
+				$scope.componentsList = testCaseComponents;
+				
+				$scope.setComponentToEdit = function(selectedTestCaseComponent){
+					if (!selectedTestCaseComponent){
+						selectedTestCaseComponent = new TestCaseComponent();
+					}
+					
+					$rootScope.$broadcast("component.update.load", selectedTestCaseComponent);
+				}
+				
+			}]);
+			
+			QACApp.controller("ComponentEditController", ["$rootScope", "$scope", "$filter", "componentToEdit", "testCaseComponents", function ComponentEditController($rootScope, $scope, $filter, componentToEdit, testCaseComponents) {
+				$scope.component = componentToEdit;
+				
+				$scope.$watch("component.selected.label", function(newValue, oldValue){
+					if (componentToEdit.selected){
+						if (!componentToEdit.selected.id){
+							componentToEdit.selectedID = $filter("cleanid")(newValue);
+						}
+					}
+				});
+				
+				$scope.updateComponentFromEdits = function(){
+					/**
+					 * New components won't have an ID, so we process them externally within 
+					 * the "componentToEdit" object.
+					 */
+					if ( !componentToEdit.selected.id){
+						if (componentToEdit.selectedID) {
+							if ( !(componentToEdit.selectedID in testCaseComponents) ){
+								componentToEdit.selected.id = componentToEdit.selectedID;
+								testCaseComponents[ componentToEdit.selected.id ] = componentToEdit.selected;
+							} else {
+								throw "Component ID already exists";
+							}
+						} else {
+							throw "Component must have an ID set";
+						}
+					}
+				}
+			}]);
+			
+			
+			
+			/**
+			 * QAObject Management
+			 */
+			QACApp.factory("qaObjectToEdit", ["$rootScope", "qaObjectProperties", "QAObject", function qaObjectToEditFactory($rootScope, testCases, QAObject) {
+				var opts = {
+					"selected": null,
+					"selectedID": null
+				};
+				
+				$rootScope.$on("qaobject.update.load", function(e, selectedQAObject){
+					opts.selected = selectedQAObject;
+					opts.selectedID = selectedQAObject.id;
+				});
+				
+				return opts;
+			}]);
+			
+			
+			QACApp.controller("qaObjectsTabContainerController", ["$rootScope", "$scope", "qaObjects", "qaObjectToEdit", "QAObject", function qaObjectsTabContainerController($rootScope, $scope, qaObjects, qaObjectToEdit, QAObject) {
+				$scope.qaobjectsList = qaObjects;
+				
+				$scope.setQAObjectToEdit = function(selectedQAObject){
+					if (!selectedQAObject){
+						selectedQAObject = new QAObject();
+					}
+					
+					$rootScope.$broadcast("qaobject.update.load", selectedQAObject);
+				}
+				
+			}]);
+			
+			QACApp.controller("QAObjectEditController", ["$rootScope", "$scope", "$filter", "qaObjectToEdit", "qaObjects", "QAObjectProperty", function QAObjectEditController($rootScope, $scope, $filter, qaObjectToEdit, qaObjects, QAObjectProperty) {
+				$scope.qaobject = qaObjectToEdit;
+				
+				$scope.$watch("qaobject.selected.label", function(newValue, oldValue){
+					if (qaObjectToEdit.selected){
+						if (!qaObjectToEdit.selected.id){
+							qaObjectToEdit.selectedID = $filter("cleanid")(newValue);
+						}
+					}
+				});
+				
+				$scope.updateQAObjectFromEdits = function(){
+					/**
+					 * New QA Objects won't have an ID, so we process them externally within 
+					 * the "qaObjectToEdit" object.
+					 */
+					if ( !qaObjectToEdit.selected.id){
+						if (qaObjectToEdit.selectedID) {
+							if ( !(qaObjectToEdit.selectedID in qaObjects) ){
+								qaObjectToEdit.selected.id = qaObjectToEdit.selectedID;
+								qaObjects[ qaObjectToEdit.selected.id ] = qaObjectToEdit.selected;
+							} else {
+								throw "QA Object ID already exists";
+							}
+						} else {
+							throw "QA Object must have an ID set";
+						}
+					}
+				}
+				
+				$scope.setQAObjectPropertyToEdit = function(selectedQAObjectProperty){
+					if (!selectedQAObjectProperty){
+						selectedQAObjectProperty = new QAObjectProperty();
+					}
+					
+					$rootScope.$broadcast("qaobjectProperty.update.load", selectedQAObjectProperty, qaObjectToEdit.selected);
+				}
+			}]);
+			
+			
+			
+			/**
+			 * QAObjectProperty Management
+			 */
+			QACApp.factory("qaObjectPropertyToEdit", ["$rootScope", "qaObjectProperties", "qaObjectPropertyTypes", function qaObjectPropertyToEditFactory($rootScope, qaObjectProperties, qaObjectPropertyTypes) {
+				var opts = {
+					"selected": null,
+					"selectedType": null,
+					"selectedID": null,
+					"selectedObject": null
+				};
+				
+				$rootScope.$on("qaobjectProperty.update.load", function(e, selectedQAObjectProperty, selectedQAObject){
+					opts.selected = selectedQAObjectProperty;
+					opts.selectedObject = selectedQAObject;
+					opts.selectedType = qaObjectPropertyTypes[ selectedQAObjectProperty.type ];
+					opts.selectedID = selectedQAObjectProperty.key;
+				});
+				
+				return opts;
+			}]);
+			
+			QACApp.controller("QAObjectPropertyEditController", ["$rootScope", "$scope", "$filter", "qaObjectPropertyToEdit", "qaObjectPropertyTypes", "qaObjectProperties", function QAObjectPropertyEditController($rootScope, $scope, $filter, qaObjectPropertyToEdit, qaObjectPropertyTypes, qaObjectProperties) {
+				$scope.qaobjectProperty = qaObjectPropertyToEdit;
+				
+				$scope.allTypes = qaObjectPropertyTypes;
+				$scope.selectedTypeValueItem = qaObjectPropertyToEdit;
+				
+				$scope.$watch("qaobjectProperty.selected.key", function(newValue, oldValue){
+					if (qaObjectPropertyToEdit.selected){
+						if (!qaObjectPropertyToEdit.selected.id){
+							qaObjectPropertyToEdit.selectedID = $filter("cleanid")(newValue);
+						}
+					}
+				});
+				
+				$scope.updateObjectPropertyType = function(){
+					qaObjectPropertyToEdit.selected.type = qaObjectPropertyToEdit.selectedType.id;
+				}
+				
+				$scope.updateQAObjectPropertyFromEdits = function(){
+					/**
+					 * New QA Object Properties won't have an ID, so we process them externally  
+					 * within the "qaObjectPropertyToEdit" object.
+					 */
+					if ( !qaObjectPropertyToEdit.selected.id){
+						if (qaObjectPropertyToEdit.selectedID) {
+							if ( !(qaObjectPropertyToEdit.selectedID in qaObjectProperties) ){
+								qaObjectPropertyToEdit.selected.id = qaObjectPropertyToEdit.selectedID;
+								qaObjectProperties[ qaObjectPropertyToEdit.selected.id ] = qaObjectPropertyToEdit.selected;
+								
+								if ( !(qaObjectPropertyToEdit.selected.id in qaObjectPropertyToEdit.selectedObject.properties) ){
+									qaObjectPropertyToEdit.selectedObject.properties[ qaObjectPropertyToEdit.selected.id ] = qaObjectPropertyToEdit.selected;
+								} else {
+									throw "QA Object Property with that ID already exists in object";
+								}
+							} else {
+								throw "QA Object Property ID already exists";
+							}
+						} else {
+							throw "QA Object Property must have an ID set";
+						}
+					}
+				}
+			}]);
+
 		</script>
 	</head>
-	<body>
+	<body ng-controller="DataLoaderController" ng-init="loadData()">
 		
 		<header class="no-print" data-sticky-container ng-controller="ModeController">
 			<section data-sticky style="width:100%;" data-margin-bottom="0" data-margin-top="0">
@@ -1221,8 +1138,10 @@
 								</li>
 								<li><div style="width: 2em;"></div></li>
 								<li>
-									<button ng-if="mode=='collection'" type="button" class="button" ng-click="generateReport()">Generate Report</button>
-									<button ng-if="mode=='reporting'" type="button" class="button alert" ng-click="startCollection()">Exit Report</button>
+									<button ng-if="mode=='collection'" type="button" class="button success" ng-click="makeDataRequest()"><i class="fa fa-database"></i> Load Data</button>
+									<button ng-if="mode=='collection'" type="button" class="button" ng-click="generateReport()"><i class="fa fa-newspaper-o"></i> Generate</button>
+									<button ng-if="mode=='reporting'" type="button" class="button alert" ng-click="startCollection()"><i class="fa fa-times"></i> Exit</button>
+									<button ng-if="mode=='reporting'" type="button" class="button success" ng-click="publishReport()"><i class="fa fa-cloud-upload"></i> Publish</button>
 								</li>
 							</ul>
 						</div>
@@ -1270,7 +1189,7 @@
 							<tbody>
 								<tr ng-repeat="failingResult in results.failing">
 									<td>{{failingResult.screen.group}}</td>
-									<td>{{failingResult.screen.name}}</td>
+									<td>{{failingResult.screen.label}}</td>
 									<td>{{failingResult.testCase.group}}</td>
 									<td>
 										<label>{{failingResult.testCase.question}}</label>
@@ -1289,157 +1208,588 @@
 		</section>
 					
 		<section class="qac-main" ng-class="{'hide': mode=='reporting'}" ng-controller="ModeController">
-			<div class="row">
-				<div class="large-12 columns">
+			<div class="row hide">
+				<div class="small-12 columns">
 					<h3>QA Checklist</h3>
 					<p>Maintain your QA Checklists and generate result reports.</p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="small-12 columns">
-					<hr/>
-					<ul class="tabs" data-tabs id="example-tabs">
+			<div class="row ">
+				<div class="small-3 columns">
+					<ul class="tabs vertical" data-tabs id="example-tabs">
 						<li class="tabs-title is-active"><a href="#qac-checklist-container" aria-selected="true">Checklist</a></li>
-						<li class="tabs-title"><a href="#panel2">Objects</a></li>
-						<li class="tabs-title"><a href="#panel2">Components</a></li>
+						<li class="tabs-title"><a href="#qac-screens-container">Screens</a></li>
+						<li class="tabs-title"><a href="#qac-components-container">Components</a></li>
+						<li class="tabs-title"><a href="#qac-objects-container">Objects</a></li>
 					</ul>
-					<div class="tabs-content" data-tabs-content="example-tabs">
+				</div>
+				<div class="small-9 columns">
+					<div class="tabs-content qac-checklist-tab-content" style="border: 1px solid #e6e6e6;" data-tabs-content="example-tabs">
 						<div class="tabs-panel is-active" id="qac-checklist-container">
-							<ul class="accordion" data-accordion role="tablist" data-multi-expand="true" data-allow-all-closed="true" ng-init="loadData(); setupGroups()" ng-controller="ScreenListController as screenList">
+							<ul class="accordion qac-checklist-groups-list" data-accordion role="tablist" data-multi-expand="true" data-allow-all-closed="true" ng-controller="ScreenListController as screenList">
 								<li class="accordion-item" ng-init="cindex = $index" ng-repeat="group in groups">
-									<a href="#qac-group--{{group.id}}" role="tab" class="accordion-title" id="qac-group--{{group.id}}-heading" aria-controls="qac-group--{{group.id}}">{{cindex+1}}. {{group.name}}</a>
-									<div id="qac-group--{{group.id}}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-heading">
+									<a href="#qac-group--{{group.id}}" role="tab" class="accordion-title" id="qac-group--{{group.id}}-heading" aria-controls="qac-group--{{group.id}}">{{cindex+1}}. {{group.label}}</a>
+									<div id="qac-group--{{group.id}}" class="accordion-content qac-checklist-screens-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-heading">
+										
 										<ul class="tabs qac-group-screen-tabs-header primary" data-tabs id="qac-group-screen-tabs--{{group.id}}">
-											<li class="tabs-title {{$first?'is-active':''}}" ng-init="sindex = $index" ng-repeat="screen in group.screens"><a href="#qac-group-screen-tab--{{screen.id}}" aria-selected="true">{{sindex+1}}. {{screen.name}}</a></li>
+											<li class="tabs-title {{$first?'is-active':''}}" ng-init="sindex = $index" ng-repeat="screen in group.screens"><a href="#qac-group-screen-tab--{{screen.id}}" aria-selected="true">{{sindex+1}}. {{screen.label}}</a></li>
 										</ul>
-						
-										<div class="tabs-content" data-tabs-content="qac-group-screen-tabs--{{group.id}}">
+										<div class="tabs-content qac-checklist-tab-content" data-tabs-content="qac-group-screen-tabs--{{group.id}}">
 											<div class="tabs-panel {{$first?'is-active':''}}" id="qac-group-screen-tab--{{screen.id}}" ng-init="sindex = $index; screen.setupTestCaseGroups();" ng-repeat="screen in group.screens">
-
-												<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
-													<li class="accordion-item is-active" ng-init="tccindex = $index;" ng-repeat="testCaseGroup in screen.groups">
-														<a href="#qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}">{{tccindex+1}}. {{testCaseGroup.name}}</a>
-														<div id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading">
-															
-															<div class="callout" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroup.testCases">
-																<div class="row" ng-controller="TestCaseController">
-																	<div class="small-9 columns">
-																		<div class="row">
-																			<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.{{tcindex+1}}">{{tcindex+1}}</span></div>
-																			<div class="small-10 columns">
-																				<label>{{testCase.question}}</label>
-																				<label ng-class="{'hide': !commenting}">
-																					Comments
-																					<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																				</label>
-																			</div>
-																			<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-plus"></i></a></div>
-																		</div>
-																	</div>
-																	<div class="small-3 columns text-center">
-																		<div class="expanded tiny button-group">
-																			<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																			<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
-																		</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="qac-screen-component-container" ng-init="tcsindex = $index" ng-repeat="testCaseGroupComponent in testCaseGroup.components">
-																<div class="callout qac-screen-component-header">
-																	<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button warning"></span> {{testCaseGroupComponent.name}}</a>
-																</div>
-																<div class="callout warning" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroupComponent.testCases">
-																	<div class="row" ng-controller="TestCaseController">
-																		<div class="small-9 columns">
-																			<div class="row">
-																				<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.C.{{tcindex+1}}">{{tcindex+1}}</span></div>
-																				<div class="small-10 columns">
-																					<label>{{testCase.question}}</label>
-																					<label ng-class="{'hide': !commenting}">
-																						Comments
-																						<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																					</label>
-																				</div>
-																				<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-plus"></i></a></div>
-																			</div>
-																		</div>
-																		<div class="small-3 columns text-center">
-																			<div class="expanded tiny button-group">
-																				<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																				<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
+											
+											
+												<div class="row">
+													<div class="small-12 columns">
+														<div class="qac-screens-listing-heading">
+															<h5>Test Cases</h5>
 														</div>
-													</li>
-													
-													
-													
-													<li class="accordion-item is-active" ng-if="screen.objects">
-														<a href="#qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}">{{tccindex+1}}. Data</a>
-														<div id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading">
-															<div class="qac-object-data-container" ng-init="oindex = $index" ng-repeat="object in screen.objects">
-																<div class="callout qac-screen-object-data-header">
-																	<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button primary"></span> {{object.name}}</a>
-																</div>
-																<div class="callout primary"  ng-init="opindex = $index" ng-repeat="property in object.properties">
-																	<div class="row" ng-controller="TestCaseController">
-																		<div class="small-9 columns">
-																			<div class="row">
-																				<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.OP.{{oindex+1}}">{{opindex+1}}</span></div>
-																				<div class="small-10 columns">
-																					<label>{{property.name}}</label>
-																					<label ng-class="{'hide': !commenting}">
-																						Comments
-																						<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																					</label>
+													</div>
+							
+													<div class="small-12 columns">
+														
+														<!-- Test Case Groups List Start -->
+														<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+															<li class="accordion-item" ng-init="tccindex = $index;" ng-repeat="testCaseGroup in screen.groups">
+																<a href="#qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}">{{tccindex+1}}. {{testCaseGroup.label}}</a>
+																<div id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading">
+												
+																	<div class="callout qac-container--base" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroup.testCases">
+																		<div class="row" ng-controller="TestCaseController">
+																			<div class="small-9 columns">
+																				<div class="row">
+																					<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.{{tcindex+1}}">{{tcindex+1}}</span></div>
+																					<div class="small-10 columns">
+																						<label>{{testCase.question}}</label>
+																						<hr ng-class="{'hide': !commenting}" />
+																						<label ng-class="{'hide': !commenting}">
+																							Comments
+																							<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																						</label>
+																					</div>
+																					<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
 																				</div>
-																				<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-plus"></i></a></div>
+																			</div>
+																			<div class="small-3 columns text-center">
+																				<div class="expanded tiny button-group">
+																					<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																					<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																				</div>
 																			</div>
 																		</div>
-																		<div class="small-3 columns text-center">
-																			<div class="expanded tiny button-group">
-																				<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																				<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																	</div>
+
+																	<div class="qac-screen-component-container" ng-init="tcsindex = $index" ng-repeat="testCaseGroupComponent in testCaseGroup.components">
+																		<div class="callout qac-container--base qac-screen-component-header">
+																			<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button warning"></span> {{testCaseGroupComponent.label}}</a>
+																		</div>
+																		<div class="callout qac-container--base warning" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroupComponent.testCases">
+																			<div class="row" ng-controller="TestCaseController">
+																				<div class="small-9 columns">
+																					<div class="row">
+																						<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.C.{{tcindex+1}}">{{tcindex+1}}</span></div>
+																						<div class="small-10 columns">
+																							<label>{{testCase.question}}</label>
+																							<hr ng-class="{'hide': !commenting}" />
+																							<label ng-class="{'hide': !commenting}">
+																								Comments
+																								<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																							</label>
+																						</div>
+																						<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
+																					</div>
+																				</div>
+																				<div class="small-3 columns text-center">
+																					<div class="expanded tiny button-group">
+																						<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																						<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																					</div>
+																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-															</div>
-															
-															
-														</div>
-													</li>
-													
-												</ul>
+															</li>
+										
+															<li class="accordion-item" ng-if="screen.objects">
+																<a href="#qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}">{{tccindex+1}}. Data</a>
+																<div id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading">
+																	<div class="qac-object-data-container" ng-init="oindex = $index" ng-repeat="object in screen.objects">
+																		<div class="callout qac-container--base qac-screen-object-data-header">
+																			<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button primary"></span> {{object.label}}</a>
+																		</div>
+																		<div class="callout qac-container--base primary"  ng-init="opindex = $index" ng-repeat="testCase in object.properties">
+																			<div class="row" ng-controller="TestCaseController">
+																				<div class="small-9 columns">
+																					<div class="row">
+																						<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.OP.{{oindex+1}}">{{opindex+1}}</span></div>
+																						<div class="small-10 columns">
+																							<label>{{testCase.label}}</label>
+																							<hr ng-class="{'hide': !commenting}" />
+																							<label ng-class="{'hide': !commenting}">
+																								Comments
+																								<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																							</label>
+																						</div>
+																						<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
+																					</div>
+																				</div>
+																				<div class="small-3 columns text-center">
+																					<div class="expanded tiny button-group">
+																						<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																						<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+														<!-- Test Case Groups List End -->
+													</div>
+												</div>
 											</div>
+											<!-- Primary Tab Panel Close -->
 										</div>
 									</div>
 								</li>
 							</ul>
 						</div>
+						
+						
 					
-						<div class="tabs-panel" id="qac-objects-container"></div>
-						<div class="tabs-panel" id="qac-screen-components-container"></div>
+						<div class="tabs-panel" id="qac-screens-container" ng-controller="ScreensTabContainerController">
+							<div class="row">
+								<div class="small-12 columns text-right">
+									<button class="button" data-open="qac-screen-modal" ng-click="setScreenToEdit()"><i class="fa fa-plus"></i> Add Screen</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 columns">
+									<table id="qac-screens-list" datatable="ng">
+										<thead>
+											<tr>
+												<th>Screen</th>
+												<th>Group</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="screen in screensList">
+												<td class="qac-screen-list-label-cell-{{screen.id}}" ng-click="setScreenToEdit(screen)">
+													<a href="javascript:void(0);" data-open="qac-screen-modal">{{screen.label}}</a>
+												</td>
+												<td class="qac-screen-list-group-cell-{{screen.id}}">
+													{{screenGroups[ screen.group ].label}}
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="tabs-panel" ng-controller="ComponentsTabContainerController" id="qac-components-container">
+							<div class="row">
+								<div class="small-12 columns text-right">
+									<button class="button" data-open="qac-component-modal" ng-click="setComponentToEdit()"><i class="fa fa-plus"></i> Add Component</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 columns">
+									<table id="qac-components-list" datatable="ng">
+										<thead>
+											<tr>
+												<th>Component</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="component in componentsList">
+												<td class="qac-component-list-group-cell-{{screen.id}}" ng-click="setComponentToEdit(component)">
+													<a href="javascript:void(0);" data-open="qac-component-modal">{{component.label}}</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="tabs-panel" id="qac-objects-container" ng-controller="qaObjectsTabContainerController">
+							<div class="row">
+								<div class="small-12 columns text-right">
+									<button class="button" data-open="qac-qaobject-modal" ng-click="setQAObjectToEdit()"><i class="fa fa-plus"></i> Add Object</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 columns">
+									<table id="qac-qaobjects-list" datatable="ng">
+										<thead>
+											<tr>
+												<th>Object</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="qaobject in qaobjectsList">
+												<td class="qac-qaobject-list-group-cell-{{screen.id}}" ng-click="setQAObjectToEdit(qaobject)">
+													<a href="javascript:void(0);" data-open="qac-qaobject-modal">{{qaobject.label}}</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						
+						
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<!-- QA Object Property Management Modal -->
+		<div id="qac-qaobjectProperty-modal" ng-controller="QAObjectPropertyEditController" class="reveal large" role="dialog" data-reveal>
+			<h1>Object Property Management</h1>
+			<form data-abide novalidate>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>ID
+							<input type="text" disabled ng-model="qaobjectProperty.selectedID" placeholder="background-color" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Name
+							<input type="text" ng-model="qaobjectProperty.selected.key" placeholder="backgroundColor" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Display Label
+							<input type="text" ng-model="qaobjectProperty.selected.label" placeholder="Background Color" required />
+						</label>
+					</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Type
+							<select ng-model="screen.selectedType" required ng-options="type as type.label for type in allTypes track by type.id" ng-change="updateObjectPropertyType()" required /></select>
+						</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Input Placeholder
+							<input type="text" ng-model="qaobjectProperty.selected.placeholder" placeholder="Enter a color code here" />
+						</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Group
+							<input type="text" ng-model="qaobjectProperty.selected.group" placeholder="" />
+						</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="small-6 columns">
+						<label>Displayed
+							<div class="switch">
+								<input class="switch-input" ng-model="qaobjectProperty.selected.displayed" id="qac-objectProperty-displayed--checkbox" type="checkbox">
+								<label class="switch-paddle" for="qac-objectProperty-displayed--checkbox">
+									<span class="show-for-sr">Displayed</span>
+								</label>
+							</div>
+						</label>
+					</div>
+					
+					<div class="small-6 columns">
+						<label>Editable
+							<div class="switch">
+								<input class="switch-input" ng-model="qaobjectProperty.selected.editable" id="qac-objectProperty-editable--checkbox" type="checkbox">
+								<label class="switch-paddle" for="qac-objectProperty-editable--checkbox">
+									<span class="show-for-sr">Editable</span>
+								</label>
+							</div>
+						</label>
+					</div>
+				</div>
+				
+			</form>
+			
+			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateQAObjectPropertyFromEdits()" data-toggle="qac-qaobject-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" data-toggle="qac-qaobject-modal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		
+		<!-- QA Object Management Modal -->
+		<div id="qac-qaobject-modal" ng-controller="QAObjectEditController" class="reveal large" role="dialog" data-reveal>
+			<h1>Object Management</h1>
+			<form data-abide novalidate>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>ID
+							<input type="text" disabled ng-model="qaobject.selectedID" placeholder="navigation-bar" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Name
+							<input type="text" ng-model="qaobject.selected.label" placeholder="" required />
+						</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="small-12 columns">
+						<div class="callout secondary">
+							
+							<div class="row">
+								<div class="small-6 columns">
+									<h4>Properties</h4>
+								</div>
+								
+								<div class="small-6 columns text-right">
+									<button class="button" ng-click="setQAObjectPropertyToEdit()" style="margin-bottom: 0;" data-toggle="qac-qaobjectProperty-modal"><i class="fa fa-plus"></i> Add Property</button>
+								</div>
+							</div>
+							<hr/>
+							
+							<table id="qac-qaobject-edit-properties-list">
+								<thead>
+									<tr>
+										<th>Property</th>
+										<th>Placeholder</th>
+										<th>Required</th>
+										<th>Displayed</th>
+										<th>Editable</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="qaobjectProperty in qaobject.selected.properties">
+										<td>
+											<a href="#" data-open="qac-qaobjectProperty-modal" ng-click="setQAObjectPropertyToEdit(qaobjectProperty)">{{qaobjectProperty.label}}</a>
+										</td>
+										<td>
+											{{qaobjectProperty.type}}
+										</td>
+										<td>
+											{{!!qaobjectProperty.required}}
+										</td>
+										<td>
+											{{!!qaobjectProperty.displayed}}
+										</td>
+										<td>
+											{{!!qaobjectProperty.editable}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateQAObjectFromEdits()" data-toggle="qac-qaobject-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<!-- Component Management Modal -->
+		<div id="qac-component-modal" ng-controller="ComponentEditController" class="reveal large" role="dialog" data-reveal>
+			<h1>Component Management</h1>
+			<form data-abide novalidate>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>ID
+							<input type="text" disabled ng-model="component.selectedID" placeholder="navigation-bar" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Name
+							<input type="text" ng-model="component.selected.label" placeholder="Navigation Bar" required />
+						</label>
+					</div>
+				</div>
+			</form>
+			
+			<div class="row">
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateComponentFromEdits()" data-toggle="qac-component-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		
+		
+		<!-- Screen Management Modal -->
+		<div id="qac-screen-modal" ng-controller="ScreenEditController" class="reveal large" role="dialog" data-reveal>
+			<h1>Screen Management</h1>
+			<form data-abide novalidate>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>ID
+							<input type="text" disabled ng-model="screen.selectedID" placeholder="entry-page" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Name
+							<input type="text" ng-model="screen.selected.label" placeholder="Entry Page" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Group
+							<select id="qac-screen-management-group" style="width: 100%;" required /></select>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Level
+							<input type="number" ng-model="screen.selected.level" placeholder="0" required />
+						</label>
+					</div>
+				</div>
+			</form>
+			
+			<div class="row">
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateScreenFromEdits()" data-toggle="qac-screen-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+
+
+		<!-- Publish Management Modal -->
+		<div id="qac-publish-modal" ng-controller="PublishController" class="reveal large" role="dialog" data-reveal>
+			<h1>Publish Management</h1>
+			<p class="lead">Please choose a source to publish too</p>
+			
+			<hr/>
+			
+			<ul class="accordion" data-accordion role="tablist">
+				<li class="accordion-item">
+					<a href="#qac-publish-modal-trello-options" ng-click="initializeDrillDown()" role="tab" class="accordion-title" id="qac-publish-modal-trello-options-heading" aria-controls="qac-publish-modal-trello-options"><i class="fa fa-trello"></i> Trello</a>
+					<div id="qac-publish-modal-trello-options" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="qac-publish-modal-trello-options-heading">
+						<div class="row">
+							<div class="small-12 columns">
+								<p>To publish to Trello, you must select a board and a list to publish too. 
+									Once selected, a new card with a checklist inside will be created.</p>
+							</div>
+							<div class="small-12 columns">
+								<ul class="vertical menu" id="qac-board-listing">
+									<li ng-repeat="board in boards">
+										<a href="#"><i class="fa fa-columns"></i>&nbsp; {{board.name}}</a>
+										<ul class="nested vertical menu">
+											<li ng-repeat="list in board.lists"><a href="#" ng-click="selectList(list)"><i class="fa fa-list-alt"></i>&nbsp; {{list.name}}</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+			<div class="row">
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateScreenFromEdits()" data-toggle="qac-screen-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div id="qac-publish-success-modal" class="reveal large text-center" role="dialog" data-reveal>
+			<h1><i class="fa fa-trello"></i> Publish Success</h1>
+			<hr/>
+			
+			<div class="row">
+				<div class="small-12 columns text-center">
+					<i class="fa fa-check" style="color:green;font-weight:900;font-size:8em"></i>
+				</div>
+				<div class="small-12 columns text-center">
+					<h3>New Card Created In Trello!</h3>
+				</div>
+			</div>
+
+			<hr/>
+			
+			<div class="row">
+				<div class="small-12 columns text-right">
+					<button class="button" data-toggle="qac-publish-success-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+			
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 	
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/foundation/dataTables.foundation.js"></script>
+		<script src="angular-datatables.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+		
+		<script src="https://trello.com/1/client.js?key=6e3e7df6e1e79a428e759330048443b0"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-
-
+		
 		<script>
 			$(function(){
 			
 				$(document).foundation();
+				// $("table").DataTable();
 			});
 		</script>
 	</body>

@@ -1,0 +1,781 @@
+{  
+    "data":{  
+        "screenGroups":{  
+            "system":{  
+                "id":"system",
+                "label":"System"
+            },
+            "dashboard":{  
+                "id":"dashboard",
+                "label":"Dashboard"
+            },
+            "opportunities":{  
+                "id":"opportunities",
+                "label":"Opportunities"
+            },
+            "accounts":{  
+                "id":"accounts",
+                "label":"Accounts"
+            },
+            "contacts":{  
+                "id":"contacts",
+                "label":"Contacts"
+            },
+            "leads":{  
+                "id":"leads",
+                "label":"Leads"
+            },
+            "my-profile":{  
+                "id":"my-profile",
+                "label":"My Profile"
+            },
+            "sync":{  
+                "id":"sync",
+                "label":"Sync"
+            },
+            "about":{  
+                "id":"about",
+                "label":"About"
+            }
+        },
+        "screens":{  
+            "system-main-menu":{  
+                "id":"system-main-menu",
+                "type":"screen",
+                "level":0,
+                "label":"Main Menu",
+                "group":"system"
+            },
+            "system-contact-select":{  
+                "id":"system-contact-select",
+                "type":"screen",
+                "level":2,
+                "label":"Contact Select",
+                "group":"system"
+            },
+            "dashboard-main":{  
+                "id":"dashboard-main",
+                "type":"screen",
+                "level":0,
+                "label":"Main",
+                "group":"dashboard"
+            },
+            "opportunities-list":{  
+                "id":"opportunities-list",
+                "type":"screen",
+                "level":0,
+                "label":"List",
+                "group":"opportunities"
+            },
+            "opportunities-create":{  
+                "id":"opportunities-create",
+                "type":"screen",
+                "level":1,
+                "label":"Create",
+                "group":"opportunities"
+            },
+            "opportunities-details":{  
+                "id":"opportunities-details",
+                "type":"screen",
+                "level":1,
+                "label":"Details",
+                "group":"opportunities"
+            },
+            "opportunities-lanes":{  
+                "id":"opportunities-lanes",
+                "type":"screen",
+                "level":1,
+                "label":"Lanes",
+                "group":"opportunities"
+            },
+            "opportunities-contacts":{  
+                "id":"opportunities-contacts",
+                "type":"screen",
+                "level":1,
+                "label":"Contacts",
+                "group":"opportunities"
+            },
+            "opportunities-activities":{  
+                "id":"opportunities-activities",
+                "type":"screen",
+                "level":1,
+                "label":"Activities",
+                "group":"opportunities"
+            },
+            "accounts-list":{  
+                "id":"accounts-list",
+                "type":"screen",
+                "level":0,
+                "label":"List",
+                "group":"accounts"
+            },
+            "accounts-create":{  
+                "id":"accounts-create",
+                "type":"screen",
+                "level":1,
+                "label":"Create",
+                "group":"accounts"
+            },
+            "accounts-details":{  
+                "id":"accounts-details",
+                "type":"screen",
+                "level":1,
+                "label":"Details",
+                "group":"accounts"
+            },
+            "accounts-other":{  
+                "id":"accounts-other",
+                "type":"screen",
+                "level":1,
+                "label":"Other",
+                "group":"accounts"
+            },
+            "accounts-contacts":{  
+                "id":"accounts-contacts",
+                "type":"screen",
+                "level":1,
+                "label":"Contacts",
+                "group":"accounts"
+            },
+            "accounts-opportunities":{  
+                "id":"accounts-opportunities",
+                "type":"screen",
+                "level":1,
+                "label":"Opportunities",
+                "group":"accounts"
+            },
+            "contacts-list":{  
+                "id":"contacts-list",
+                "type":"screen",
+                "level":0,
+                "label":"List",
+                "group":"contacts"
+            },
+            "contacts-create":{  
+                "id":"contacts-create",
+                "type":"screen",
+                "level":1,
+                "label":"Create",
+                "group":"contacts"
+            },
+            "contacts-details":{  
+                "id":"contacts-details",
+                "type":"screen",
+                "level":1,
+                "label":"Details",
+                "group":"contacts"
+            },
+            "contacts-opportunities":{  
+                "id":"contacts-opportunities",
+                "type":"screen",
+                "level":1,
+                "label":"Opportunities",
+                "group":"contacts"
+            },
+            "leads-list":{  
+                "id":"leads-list",
+                "type":"screen",
+                "level":0,
+                "label":"List",
+                "group":"leads"
+            },
+            "leads-create":{  
+                "id":"leads-create",
+                "type":"screen",
+                "level":1,
+                "label":"Create",
+                "group":"leads"
+            },
+            "leads-details":{  
+                "id":"leads-details",
+                "type":"screen",
+                "level":1,
+                "label":"Details",
+                "group":"leads"
+            },
+            "leads-freight":{  
+                "id":"leads-freight",
+                "type":"screen",
+                "level":1,
+                "label":"Freight",
+                "group":"leads"
+            },
+            "leads-contacts":{  
+                "id":"leads-contacts",
+                "type":"screen",
+                "level":1,
+                "label":"Contacts",
+                "group":"leads"
+            },
+            "leads-opportunities":{  
+                "id":"leads-opportunities",
+                "type":"screen",
+                "level":1,
+                "label":"Opportunities",
+                "group":"leads"
+            },
+            "my-profile-main":{  
+                "id":"my-profile-main",
+                "type":"screen",
+                "level":0,
+                "label":"Main",
+                "group":"my-profile"
+            },
+            "sync-main":{  
+                "id":"sync-main",
+                "type":"screen",
+                "level":0,
+                "label":"Main",
+                "group":"sync"
+            },
+            "about-main":{  
+                "id":"about-main",
+                "type":"screen",
+                "level":0,
+                "label":"Main",
+                "group":"about"
+            }
+        },
+        "objects":{  
+            "Opportunity":{  
+                "id":"opportunity",
+                "label":"Opportunity",
+                "properties":{  
+                    "company-name":{  
+                        "id":"company-name",
+                        "label":"Company Name",
+                        "key":"companyName",
+                        "type":"input-search",
+                        "placeholder":"",
+                        "validations":[  
+                            "required"
+                        ],
+                        "group":false,
+                        "displayed":true,
+                        "editable":true,
+                        "screens":[  
+                            "opportunities-details",
+                            "opportunities-create"
+                        ]
+                    }
+                }
+            }
+        },
+        "components":{  
+            "list":{  
+                "id":"list",
+                "label":"List Component",
+                "screens":{  
+                    "system-contact-select":{  
+                        "state":"inline"
+                    },
+                    "dashboard":{  
+                        "state":"inline"
+                    },
+                    "opportunities-list":{  
+                        "state":"full-screen"
+                    },
+                    "opportunities-lanes":{  
+                        "state":"normal"
+                    },
+                    "opportunities-contacts":{  
+                        "state":"normal"
+                    },
+                    "opportunities-activities":{  
+                        "state":"normal"
+                    },
+                    "accounts-list":{  
+                        "state":"full-screen"
+                    },
+                    "accounts-contacts":{  
+                        "state":"normal"
+                    },
+                    "accounts-opportunities":{  
+                        "state":"normal"
+                    },
+                    "contacts-list":{  
+                        "state":"full-screen"
+                    },
+                    "contacts-opportunities":{  
+                        "state":"normal"
+                    },
+                    "leads-list":{  
+                        "state":"full-screen"
+                    },
+                    "leads-contacts":{  
+                        "state":"normal"
+                    },
+                    "leads-opportunities":{  
+                        "state":"normal"
+                    }
+                }
+            },
+            "navigation-bar":{  
+                "id":"navigation-bar",
+                "label":"Navigation Bar Component",
+                "screens":{  
+                    "system-contact-select":{  
+                        "state":"sublevel-back-only"
+                    },
+                    "dashboard-main":{  
+                        "state":"add"
+                    },
+                    "opportunities-list":{  
+                        "state":"add"
+                    },
+                    "opportunities-create":{  
+                        "state":"sublevel-save"
+                    },
+                    "opportunities-details":{  
+                        "state":"sublevel-edit"
+                    },
+                    "opportunities-lanes":{  
+                        "state":"sublevel-add"
+                    },
+                    "opportunities-contacts":{  
+                        "state":"sublevel-add"
+                    },
+                    "opportunities-activities":{  
+                        "state":"sublevel-add"
+                    },
+                    "accounts-list":{  
+                        "state":"add"
+                    },
+                    "accounts-create":{  
+                        "state":"sublevel-save"
+                    },
+                    "accounts-details":{  
+                        "state":"sublevel-edit"
+                    },
+                    "accounts-other":{  
+                        "state":"sublevel-edit"
+                    },
+                    "accounts-contacts":{  
+                        "state":"sublevel-add"
+                    },
+                    "accounts-opportunities":{  
+                        "state":"sublevel-add"
+                    },
+                    "contacts-list":{  
+                        "state":"add"
+                    },
+                    "contacts-create":{  
+                        "state":"sublevel-save"
+                    },
+                    "contacts-details":{  
+                        "state":"sublevel-edit"
+                    },
+                    "contacts-opportunities":{  
+                        "state":"sublevel-add"
+                    },
+                    "leads-list":{  
+                        "state":"add"
+                    },
+                    "leads-create":{  
+                        "state":"sublevel-save"
+                    },
+                    "leads-details":{  
+                        "state":"sublevel-edit"
+                    },
+                    "leads-freight":{  
+                        "state":"sublevel-edit"
+                    },
+                    "leads-contacts":{  
+                        "state":"sublevel-add"
+                    },
+                    "leads-opportunities":{  
+                        "state":"sublevel-add"
+                    },
+                    "my-profile-main":{  
+                        "state":"add"
+                    },
+                    "sync-main":{  
+                        "state":"add"
+                    },
+                    "about-main":{  
+                        "state":"add"
+                    }
+                }
+            }
+        },
+        "cases":[  
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Open by menu button in top left corner when closed",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Close by menu button in top left corner when open",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Open by swipe when closed",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Close by swipe when open",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Close by clicking outside of menu (click does not propagate outside of menu)",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Current screen shows active in menu",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting menu item goes to expected screen",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting menu item closes menu",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting menu item but not fully engaging highlights menu item",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting profile avatar goes to My Profile screen",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"If menu list overflows screen height, scrolling is enabled",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"When open, only ¾’ths of screen is consumed by menu",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Profile data container consumes ⅓ of screen height",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Profile data container is centered",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Profile data container has light blue background",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Profile data avatar image is set to correct resolution for screen size",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Menu items are capitalized",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Menu item have icons",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Menu item icons are correct for their menu item",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Menu item icons are unique",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Menu item icons are correct size",
+                "screens":[  
+                    "system-main-menu"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting a contact in the list highlights the item in order to move between lists",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting an item that has already been selected will unselect that item",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Selecting another item unselects previously selected items",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Pressing “Add” control option when an item is selected in the items available list moves it to the items selected list",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Pressing “Add” control option when an item isn’t selected does nothing",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Pressing “Remove” control option when an item is selected in the items selected list moves it to the items available list",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Pressing “Remove” control option when an item isn’t selected does nothing",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Buttons have light blue background color and correct icons",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"List controls show option to add or delete a list item",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"List shows a maximum of 15 items and overflow initializes scrolling",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Buttons have light blue background color and correct icons",
+                "screens":[  
+                    "system-contact-select"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Functionality",
+                "question":"Header has Back button that leads to previous expected screen",
+                "components":{  
+                    "navigation-bar":[  
+                        "sublevel-back-only",
+                        "sublevel-add",
+                        "sublevel-edit",
+                        "sublevel-save"
+                    ]
+                }
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Empty result sets show an empty message",
+                "components":{  
+                    "list":[  
+                        "inline",
+                        "normal",
+                        "full-screen"
+                    ]
+                }
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Empty message has light blue font color",
+                "components":{  
+                    "list":[  
+                        "inline",
+                        "normal",
+                        "full-screen"
+                    ]
+                }
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"List headers are bold and padded",
+                "components":{  
+                    "list":[  
+                        "inline"
+                    ]
+                }
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"List respects data limit of 10 maximum rows and overflow initializes scrolling",
+                "components":{  
+                    "list":[  
+                        "inline"
+                    ]
+                }
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Primary header left column is in larger font size",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Primary header left column is bold and in light blue font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Primary header right column Sales Stage bubble is correct color and has contrasting font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Secondary header left column is in light grey font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Secondary header right column in in light grey font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Third header left column is bold and in light blue font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Third header right column has Total Revenue and is currency formatted",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            },
+            {  
+                "type":"check",
+                "group":"Aesthetic & Layout",
+                "question":"Third header right column is bold and in light grey font color",
+                "screens":[  
+                    "opportunities-details"
+                ]
+            }
+        ]
+    }
+}
