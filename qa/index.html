@@ -28,6 +28,7 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<style>
+
 			header{
 				margin-bottom: 2em;
 			}
@@ -36,18 +37,142 @@
 				width: 100%;
 			}
 			
+			a, a.accordion-title, .tabs-title a{
+				color: #005555;
+			}
+			
+			a:hover{
+				color: #006666;
+			}
+			
+			#offCanvasLeft{
+				background: #125358;
+				color: #FFFFFF;
+			}
+			
+			.off-canvas-content{
+				background: #E9E9E9;
+				overflow: scroll;
+			}
+			
+			hr.alt{
+				border-color: #006666;
+			    border-top: 1px solid #004444;
+			}
+
+			button.button.hollow{
+				color: #005555;
+				border-color: #005555;
+			}
+			
+			button.button{
+				color: #005555;
+				background: #008584;
+			}
+			
+			.qac-sidemenu-header{
+				margin-top: .5em;
+				background: #125358;
+			}
+			
+			.qac-main-menu-icon{
+				color: #005555;
+				margin: .4em 1em;
+				cursor: pointer;
+			}
+			
+			.title-bar{
+/*				background: #FFF;*/
+			}
+
+			.title-bar ul{
+				background: none;
+				border: none;
+			}
+			
+			.title-bar li{
+				background: none;
+				border: none;
+			}
+			
+			.title-bar li .submenu{
+				border: 1px solid #005555 !important;
+			}
+			
+			.title-bar li .submenu li{
+				background: #125358;
+/*				border-bottom: 1px solid #006666;*/
+/*			    border-top: 1px solid #004444;*/
+			}
+			
+			.title-bar li .submenu li a{
+				color: #FFFFFF;
+				font-size: .8rem;
+				padding: 1em !important;
+			}
+			
+			.title-bar li .submenu li a:hover{
+				color: #CCCCCC;
+			}
+
+			.title-bar li a{
+				background: none;
+				border: none;
+				padding: .5em 1em !important;
+				color: #005555;
+				font-size: .9rem;
+				font-weight: 500;
+/*				text-transform: uppercase;*/
+				border-right: 1px solid #333;
+			}
+			
+			.title-bar .title-bar-right li a{
+				border-right: none;
+			    padding-right: 1.5rem !important;
+			}
+			
+			.title-bar .dropdown.menu .is-dropdown-submenu-parent.is-down-arrow>a::after{
+				top: .7em;
+				border-color: #006666 transparent transparent;
+			}
+			
+			.title-bar li a:hover{
+				color: #006666;
+				background: none;
+			}
+			
+			.title-bar li a[aria-selected=true]{
+				color: #008584;
+				background: none;
+			}
+			
+
+			
+			.qac-sidemenu-close--button{
+				font-weight: 200;
+				cursor: pointer;
+			}
+			
 			.qac-generated-report{
 				font-family: 'Libre Baskerville', serif;
 			}
 			
 			h1,h2,h3,h4,h5,h6{
 				font-family: 'Alegreya', serif;
-				font-family: 'Merriweather', serif;
+			}
+			
+			.qac-header-control-button{
+				margin-bottom: 0;
 			}
 			
 			.qac-report-failed-item-container{
 				padding: .5em 1em;
 				
+			}
+			
+			
+			.qac-report-mode{
+				background: #FFFFFF;
 			}
 			
 			.qac-total-stat{
@@ -56,17 +181,21 @@
 			}
 			
 			.qac-screens-listing-heading{
-				background: #EEE;
+				background: #006666;
 			    border-top-right-radius: 5px;
 			    border-top-left-radius: 5px;
 				border: 1px solid #e6e6e6;
 			    padding: .5em 1.3em .1em 1.2em;
 			}
 			
+			.qac-checklist-tab-content{
+/*				background: #3E5C5F;*/
+				border-radius: 5px;
+			}
+			
 			.qac-screens-listing-heading h5{
 			    letter-spacing: 1px;
-			    font-weight: 600;
-				color: #222;
+				color: #002D31;
 			}
 			
 			.qac-screen-component-header{
@@ -116,6 +245,20 @@
 /*				border: none;*/
 			}
 			
+			.tabs-panel .qac-top-tab-panel-header{
+			    margin: -1.1rem !important;
+			    background: #008584;
+			    border-top-right-radius: 5px;
+			    border-top-left-radius: 5px;
+			    padding-top: .5em;
+				color: #002D31;
+				margin-bottom: 1em !important;
+			}
+			
+			.qac-top-tab-panel-header button{
+				margin-bottom: 0;
+			}
+			
 			.qac-container--base,.button-group{
 				margin-bottom: 0;
 				border-top: none;
@@ -157,24 +300,24 @@
 
 			QACApp.value("appData", {
 		        "screenGroups":{  
-		            "example":{  
-		                "id":"example",
+		            "example-group":{  
+		                "id":"example-group",
 		                "label":"Example Screen Group",
 						"type":"group"
 		            }
 				},
 		        "screens":{  
-		            "example":{  
-		                "id":"example",
+		            "example-screen":{  
+		                "id":"example-screen",
 		                "type":"screen",
 		                "level":0,
 		                "label":"Example Screen",
-		                "group":"example"
+		                "group":"example-group"
 		            }
 				},
 		        "objects":{  
-		            "example":{  
-		                "id":"example",
+		            "example-object":{  
+		                "id":"example-object",
 		                "label":"Example Object",
 		                "properties":{  
 		                    "example-property":{  
@@ -190,31 +333,41 @@
 		                        "displayed":true,
 		                        "editable":true,
 		                        "screens":[  
-		                            "example"
+		                            "example-screen"
 		                        ]
 		                    }
 		                }
 		            }
 		        },
 		        "components":{  
-		            "example":{  
-		                "id":"example",
+		            "example-component":{  
+		                "id":"example-component",
 		                "label":"Example Component",
 		                "screens":{  
-		                    "example":{  
+		                    "example-screen":{  
 		                        "state":"example-state"
 		                    }
 						}
 					}
 				},
 		        "cases":{
-		            "example": {  
+		            "example-testCase-1": {  
+						"id": "example-testCase-1",
 		                "type":"check",
 		                "group":"Example Test Case Group",
 		                "question":"Example Test Case Question...",
 		                "screens":[  
-		                    "example"
+		                    "example-screen"
 		                ]
+		            },
+		            "example-testCase-2": {  
+						"id": "example-testCase-2",
+		                "type":"check",
+		                "group":"Example Test Case For Component",
+		                "question":"Example Test Case Component Question...",
+		                "components":{
+		                    "example-component":["example-state"]
+		                }
 		            }
 				}
 			});
@@ -801,6 +954,67 @@
 			
 			
 			
+			/**
+			 * Test Case Management
+			 */
+			QACApp.factory("testCaseToEdit", ["$rootScope", function testCaseToEditFactory($rootScope) {
+				var opts = {
+					"selected": null,
+					"selectedID": null
+				};
+				
+				$rootScope.$on("testCase.update.load", function(e, selectedTestCase){
+					opts.selected = selectedTestCase;
+					opts.selectedID = selectedTestCase.id;
+				});
+				
+				return opts;
+			}]);
+			
+			
+			QACApp.controller("TestCasesTabContainerController", ["$rootScope", "$scope", "testCases", "testCaseToEdit", "TestCase", function TestCasesTabContainerController($rootScope, $scope, testCases, testCaseToEdit, TestCase) {
+				$scope.testCasesList = testCases;
+				
+				$scope.setTestCaseToEdit = function(selectedTestCase){
+					if (!selectedTestCase){
+						selectedTestCase = new TestCase();
+					}
+					
+					$rootScope.$broadcast("testCase.update.load", selectedTestCase);
+				}
+				
+			}]);
+			
+			QACApp.controller("TestCaseEditController", ["$rootScope", "$scope", "$filter", "testCaseToEdit", "testCases", function TestCaseEditController($rootScope, $scope, $filter, testCaseToEdit, testCases) {
+				$scope.testCase = testCaseToEdit;
+				
+				$scope.$watch("testCase.selected.label", function(newValue, oldValue){
+					if (testCaseToEdit.selected){
+						if (!testCaseToEdit.selected.id){
+							testCaseToEdit.selectedID = $filter("cleanid")(newValue);
+						}
+					}
+				});
+				
+				$scope.updateFromEdits = function(){
+					/**
+					 * New testCases won't have an ID, so we process them externally within 
+					 * the "testCaseToEdit" object.
+					 */
+					if ( !testCaseToEdit.selected.id){
+						if (testCaseToEdit.selectedID) {
+							if ( !(testCaseToEdit.selectedID in testCases) ){
+								testCaseToEdit.selected.id = testCaseToEdit.selectedID;
+								testCases[ testCaseToEdit.selected.id ] = testCaseToEdit.selected;
+							} else {
+								throw " ID already exists";
+							}
+						} else {
+							throw " must have an ID set";
+						}
+					}
+				}
+			}]);
 			
 			
 			/**
@@ -1120,335 +1334,455 @@
 	</head>
 	<body ng-controller="DataLoaderController" ng-init="loadData()">
 		
-		<header class="no-print" data-sticky-container ng-controller="ModeController">
-			<section data-sticky style="width:100%;" data-margin-bottom="0" data-margin-top="0">
-				<nav class="top-bar">
-					<div class="row">
-						<div class="top-bar-left">
-							<ul class="dropdown menu">
-								<li class="menu-text">QA Checklist</li>
-							</ul>
-						</div>
-						<div class="top-bar-right">
-							<ul class="menu">
-								<li ng-controller="ReportResultsController">
-									<span class="qac-total-stat button tiny success">Pass: {{totals.totalPass()}} <i class="fa fa-check"></i></span>
-									<span class="qac-total-stat button tiny alert">Fail: {{totals.totalFail()}} <i class="fa fa-times"></i></span>
-									<span class="qac-total-stat button tiny secondary">Total: {{totals.totalEmpty()}}</span>
-								</li>
-								<li><div style="width: 2em;"></div></li>
-								<li>
-									<button ng-if="mode=='collection'" type="button" class="button success" ng-click="makeDataRequest()"><i class="fa fa-database"></i> Load Data</button>
-									<button ng-if="mode=='collection'" type="button" class="button" ng-click="generateReport()"><i class="fa fa-newspaper-o"></i> Generate</button>
-									<button ng-if="mode=='reporting'" type="button" class="button alert" ng-click="startCollection()"><i class="fa fa-times"></i> Exit</button>
-									<button ng-if="mode=='reporting'" type="button" class="button success" ng-click="publishReport()"><i class="fa fa-cloud-upload"></i> Publish</button>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</section>
-		</header>
-		
-		<section class="qac-generated-report hide" ng-class="{'hide': mode=='collection'}" ng-controller="ModeController">
-			<div ng-controller="ReportController">
-				<div class="row">
-					<div class="small-4 columns">
-						<canvas id="myChart"></canvas>
-					</div>
-					<div class="small-8 columns">
-						<div class="row">
-							<div class="small-8 columns">
-								<h1>Checklist Results</h1>
-								<h3>{{results.results.length}} Total Test Cases</h3>
-							</div>
-							<div class="small-4 text-right columns">
-								<label>Date Produced: {{postedDate | date:'yyyy-MM-dd'}}</label>
-								<label>Agent: Sean Murray</label>
-								<label>Result: {{results.failing.length == 0 ? 'Pass' : 'Fail'}}</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="small-12 columns">
-						<h3>{{results.failing.length}} Failing</h3>
-						<hr/>
-					</div>
-					<div class="small-12 columns">
-						<table width="100%">
-							<thead>
-								<tr>
-									<th width="15%">Group</th>
-									<th width="15%">Screen</th>
-									<th width="15%">Type</th>
-									<th>Test Case</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="failingResult in results.failing">
-									<td>{{failingResult.screen.group}}</td>
-									<td>{{failingResult.screen.label}}</td>
-									<td>{{failingResult.testCase.group}}</td>
-									<td>
-										<label>{{failingResult.testCase.question}}</label>
-										<hr ng-if="failingResult.comments"/>
-										<div ng-if="failingResult.comments">
-											<small><strong>Comments:</strong> {{failingResult.comments}}</small>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-			</div>
-		</section>
+		<div class="off-canvas-wrapper">
+			<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper ng-controller="ModeController">
+				<div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas ng-controller="ReportResultsController">
 					
-		<section class="qac-main" ng-class="{'hide': mode=='reporting'}" ng-controller="ModeController">
-			<div class="row hide">
-				<div class="small-12 columns">
-					<h3>QA Checklist</h3>
-					<p>Maintain your QA Checklists and generate result reports.</p>
-				</div>
-			</div>
-			<div class="row ">
-				<div class="small-3 columns">
-					<ul class="tabs vertical" data-tabs id="example-tabs">
-						<li class="tabs-title is-active"><a href="#qac-checklist-container" aria-selected="true">Checklist</a></li>
-						<li class="tabs-title"><a href="#qac-screens-container">Screens</a></li>
-						<li class="tabs-title"><a href="#qac-components-container">Components</a></li>
-						<li class="tabs-title"><a href="#qac-objects-container">Objects</a></li>
-					</ul>
-				</div>
-				<div class="small-9 columns">
-					<div class="tabs-content qac-checklist-tab-content" style="border: 1px solid #e6e6e6;" data-tabs-content="example-tabs">
-						<div class="tabs-panel is-active" id="qac-checklist-container">
-							<ul class="accordion qac-checklist-groups-list" data-accordion role="tablist" data-multi-expand="true" data-allow-all-closed="true" ng-controller="ScreenListController as screenList">
-								<li class="accordion-item" ng-init="cindex = $index" ng-repeat="group in groups">
-									<a href="#qac-group--{{group.id}}" role="tab" class="accordion-title" id="qac-group--{{group.id}}-heading" aria-controls="qac-group--{{group.id}}">{{cindex+1}}. {{group.label}}</a>
-									<div id="qac-group--{{group.id}}" class="accordion-content qac-checklist-screens-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-heading">
+					<div class="row qac-sidemenu-header">
+						<div class="small-10 columns">
+							<h5><i class="fa fa-check-square-o"></i>&nbsp; QA Checklist</h5>
+						</div>
+						<div class="small-2 columns qac-sidemenu-close--button" data-toggle="offCanvasLeft">
+							<i class="fa fa-close"></i>
+						</div>
+					</div>
+					
+					<hr style="margin-top: 0;" class="alt"/>
+					
+					<div class="row">
+						<div class="small-6 columns text-center">
+							<button ng-if="mode=='collection'" type="button" class="button tiny expanded qac-header-control-button" ng-click="makeDataRequest()"><i class="fa fa-database"></i> Load Data</button>
+							<button ng-if="mode=='reporting'" type="button" class="button tiny expanded qac-header-control-button" ng-click="startCollection()"><i class="fa fa-check-square-o"></i> Checklist</button>
+						</div>
+						<div class="small-6 columns text-center">
+							<button ng-if="mode=='collection'" type="button" class="button tiny expanded qac-header-control-button" ng-click="generateReport()"><i class="fa fa-bar-chart"></i> Generate</button>
+							<button ng-if="mode=='reporting'" type="button" class="button tiny expanded qac-header-control-button" ng-click="publishReport()"><i class="fa fa-cloud-upload"></i> Publish</button>
+						</div>
+					</div>
+					
+					<hr class="alt" />
 										
-										<ul class="tabs qac-group-screen-tabs-header primary" data-tabs id="qac-group-screen-tabs--{{group.id}}">
-											<li class="tabs-title {{$first?'is-active':''}}" ng-init="sindex = $index" ng-repeat="screen in group.screens"><a href="#qac-group-screen-tab--{{screen.id}}" aria-selected="true">{{sindex+1}}. {{screen.label}}</a></li>
-										</ul>
-										<div class="tabs-content qac-checklist-tab-content" data-tabs-content="qac-group-screen-tabs--{{group.id}}">
-											<div class="tabs-panel {{$first?'is-active':''}}" id="qac-group-screen-tab--{{screen.id}}" ng-init="sindex = $index; screen.setupTestCaseGroups();" ng-repeat="screen in group.screens">
-											
-											
-												<div class="row">
-													<div class="small-12 columns">
-														<div class="qac-screens-listing-heading">
-															<h5>Test Cases</h5>
-														</div>
-													</div>
-							
-													<div class="small-12 columns">
-														
-														<!-- Test Case Groups List Start -->
-														<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
-															<li class="accordion-item" ng-init="tccindex = $index;" ng-repeat="testCaseGroup in screen.groups">
-																<a href="#qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}">{{tccindex+1}}. {{testCaseGroup.label}}</a>
-																<div id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading">
-												
-																	<div class="callout qac-container--base" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroup.testCases">
-																		<div class="row" ng-controller="TestCaseController">
-																			<div class="small-9 columns">
-																				<div class="row">
-																					<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.{{tcindex+1}}">{{tcindex+1}}</span></div>
-																					<div class="small-10 columns">
-																						<label>{{testCase.question}}</label>
-																						<hr ng-class="{'hide': !commenting}" />
-																						<label ng-class="{'hide': !commenting}">
-																							Comments
-																							<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																						</label>
-																					</div>
-																					<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
-																				</div>
-																			</div>
-																			<div class="small-3 columns text-center">
-																				<div class="expanded tiny button-group">
-																					<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																					<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
+					<div class="row collapse">
+						<div class="small-12 columns text-center">
+							<span class="button tiny expanded success"><strong>Pass: {{totals.totalPass()}}</strong> <i class="fa fa-check"></i></span>
+						</div>
+					</div>
+					<div class="row collapse">
+						<div class="small-12 columns text-center">
+							<span class="button tiny expanded alert"><strong>Fail: {{totals.totalFail()}}</strong> <i class="fa fa-times"></i></span>
+						</div>
+					</div>
+					<div class="row collapse">
+						<div class="small-12 columns text-center">
+							<span class="button tiny expanded secondary"><strong>Total: {{totals.totalEmpty()}}</strong></span>
+						</div>
+					</div>
+					
 
-																	<div class="qac-screen-component-container" ng-init="tcsindex = $index" ng-repeat="testCaseGroupComponent in testCaseGroup.components">
-																		<div class="callout qac-container--base qac-screen-component-header">
-																			<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button warning"></span> {{testCaseGroupComponent.label}}</a>
-																		</div>
-																		<div class="callout qac-container--base warning" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroupComponent.testCases">
-																			<div class="row" ng-controller="TestCaseController">
-																				<div class="small-9 columns">
-																					<div class="row">
-																						<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.C.{{tcindex+1}}">{{tcindex+1}}</span></div>
-																						<div class="small-10 columns">
-																							<label>{{testCase.question}}</label>
-																							<hr ng-class="{'hide': !commenting}" />
-																							<label ng-class="{'hide': !commenting}">
-																								Comments
-																								<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																							</label>
-																						</div>
-																						<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
-																					</div>
-																				</div>
-																				<div class="small-3 columns text-center">
-																					<div class="expanded tiny button-group">
-																						<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																						<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</li>
-										
-															<li class="accordion-item" ng-if="screen.objects">
-																<a href="#qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}">{{tccindex+1}}. Data</a>
-																<div id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading">
-																	<div class="qac-object-data-container" ng-init="oindex = $index" ng-repeat="object in screen.objects">
-																		<div class="callout qac-container--base qac-screen-object-data-header">
-																			<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button primary"></span> {{object.label}}</a>
-																		</div>
-																		<div class="callout qac-container--base primary"  ng-init="opindex = $index" ng-repeat="testCase in object.properties">
-																			<div class="row" ng-controller="TestCaseController">
-																				<div class="small-9 columns">
-																					<div class="row">
-																						<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.OP.{{oindex+1}}">{{opindex+1}}</span></div>
-																						<div class="small-10 columns">
-																							<label>{{testCase.label}}</label>
-																							<hr ng-class="{'hide': !commenting}" />
-																							<label ng-class="{'hide': !commenting}">
-																								Comments
-																								<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
-																							</label>
-																						</div>
-																						<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
-																					</div>
-																				</div>
-																				<div class="small-3 columns text-center">
-																					<div class="expanded tiny button-group">
-																						<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
-																						<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</li>
-														</ul>
-														<!-- Test Case Groups List End -->
-													</div>
-												</div>
-											</div>
-											<!-- Primary Tab Panel Close -->
+				
+				</div>
+				<div class="off-canvas-content" ng-class="{'qac-report-mode': mode=='reporting'}" data-off-canvas-content>
+	        	
+					<!-- Header Start -->
+					<header class="title-bar no-print">
+						<div class="title-bar-left">
+							<i class="fa fa-bars qac-main-menu-icon" data-open="offCanvasLeft"></i>
+						</div>
+						<div class="title-bar-left">
+							<ul class="tabs" id="example-tabs" data-tabs>
+								<li class="tabs-title is-active"><a href="#qac-checklist-container" aria-selected="true"><i class="fa fa-tasks"></i> Checklist</a></li>
+								<li class="tabs-title"><a href="#qac-testCases-container"><i class="fa fa-check-square-o"></i>&nbsp; Test Cases</a></li>
+								<li class="tabs-title"><a href="#qac-screens-container"><i class="fa fa-desktop"></i>&nbsp; Screens</a></li>
+								<li class="tabs-title"><a href="#qac-components-container"><i class="fa fa-cubes"></i>&nbsp; Components</a></li>
+								<li class="tabs-title"><a href="#qac-objects-container"><i class="fa fa-object-group"></i>&nbsp; Objects</a></li>
+							</ul>
+						</div>
+						<div class="title-bar-right">
+							<ul class="dropdown menu" data-dropdown-menu>
+								<li class="has-submenu">
+									<a href="#"><i class="fa fa-user"></i> My Account</a>
+									<ul class="submenu menu vertical text-left" style="margin-right: -9em !important; margin-top: .5em" data-submenu>
+										<li><a href="#"><i class="fa fa-gears"></i> Settings</a></li>
+										<li><a href="#"><i class="fa fa-database"></i> Data</a></li>
+										<li><hr style="margin: 0;" class="alt"/></li>
+										<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</header>
+					<!-- Header End -->
+					
+					<!-- Body Content Start -->
+					<section class="qac-generated-report hide" ng-class="{'hide': mode=='collection'}">
+						<div ng-controller="ReportController">
+							<div class="row">
+								<div class="small-4 columns">
+									<canvas id="myChart"></canvas>
+								</div>
+								<div class="small-8 columns">
+									<div class="row">
+										<div class="small-8 columns">
+											<h1>Checklist Results</h1>
+											<h3>{{results.results.length}} Total Test Cases</h3>
+										</div>
+										<div class="small-4 text-right columns">
+											<label>Date Produced: {{postedDate | date:'yyyy-MM-dd'}}</label>
+											<label>Agent: Sean Murray</label>
+											<label>Result: {{results.failing.length == 0 ? 'Pass' : 'Fail'}}</label>
 										</div>
 									</div>
-								</li>
-							</ul>
+								</div>
+							</div>
+				
+							<div class="row">
+								<div class="small-12 columns">
+									<h3>{{results.failing.length}} Failing</h3>
+									<hr/>
+								</div>
+								<div class="small-12 columns">
+									<table width="100%">
+										<thead>
+											<tr>
+												<th width="15%">Group</th>
+												<th width="15%">Screen</th>
+												<th width="15%">Type</th>
+												<th>Test Case</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="failingResult in results.failing">
+												<td>{{failingResult.screen.group}}</td>
+												<td>{{failingResult.screen.label}}</td>
+												<td>{{failingResult.testCase.group}}</td>
+												<td>
+													<label>{{failingResult.testCase.question}}</label>
+													<hr ng-if="failingResult.comments"/>
+													<div ng-if="failingResult.comments">
+														<small><strong>Comments:</strong> {{failingResult.comments}}</small>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
 						</div>
+					</section>
+					
+					<section class="qac-main" ng-class="{'hide': mode=='reporting'}">
+						<div class="row ">
+							<div class="small-12 columns">
+								
+								<!-- Tab Content Start -->
+								<div class="tabs-content qac-checklist-tab-content" style="border: 1px solid #e6e6e6;" data-tabs-content="example-tabs">
+									<div class="tabs-panel is-active" id="qac-checklist-container">
+										
+										<div class="qac-top-tab-panel-header row">
+											<div class="small-12 columns">
+												<h5><i class="fa fa-tasks"></i> CHECKLIST</h5>
+											</div>
+										</div>
+
+										<ul class="accordion qac-checklist-groups-list" data-accordion role="tablist" data-multi-expand="true" data-allow-all-closed="true" ng-controller="ScreenListController as screenList">
+											<li class="accordion-item" ng-init="cindex = $index" ng-repeat="group in groups">
+												<a href="#qac-group--{{group.id}}" role="tab" class="accordion-title" id="qac-group--{{group.id}}-heading" aria-controls="qac-group--{{group.id}}">{{cindex+1}}. {{group.label}}</a>
+												<div id="qac-group--{{group.id}}" class="accordion-content qac-checklist-screens-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-heading">
+										
+													<ul class="tabs qac-group-screen-tabs-header" data-tabs id="qac-group-screen-tabs--{{group.id}}">
+														<li class="tabs-title {{$first?'is-active':''}}" ng-init="sindex = $index" ng-repeat="screen in group.screens"><a href="#qac-group-screen-tab--{{screen.id}}" aria-selected="true">{{sindex+1}}. {{screen.label}}</a></li>
+													</ul>
+													<div class="tabs-content" data-tabs-content="qac-group-screen-tabs--{{group.id}}">
+														<div class="tabs-panel {{$first?'is-active':''}}" id="qac-group-screen-tab--{{screen.id}}" ng-init="sindex = $index; screen.setupTestCaseGroups();" ng-repeat="screen in group.screens">
+											
+											
+															<div class="row">
+																<div class="small-12 columns">
+																	<div class="qac-screens-listing-heading">
+																		<h5><i class="fa fa-check-square-o"></i> TEST CASES</h5>
+																	</div>
+																</div>
+							
+																<div class="small-12 columns">
+														
+																	<!-- Test Case Groups List Start -->
+																	<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+																		<li class="accordion-item" ng-init="tccindex = $index;" ng-repeat="testCaseGroup in screen.groups">
+																			<a href="#qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}">{{tccindex+1}}. {{testCaseGroup.label}}</a>
+																			<div id="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{testCaseGroup.id}}-heading">
+												
+																				<div class="callout qac-container--base" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroup.testCases">
+																					<div class="row" ng-controller="TestCaseController">
+																						<div class="small-9 columns">
+																							<div class="row">
+																								<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.{{tcindex+1}}">{{tcindex+1}}</span></div>
+																								<div class="small-10 columns">
+																									<label>{{testCase.question}}</label>
+																									<hr ng-class="{'hide': !commenting}" />
+																									<label ng-class="{'hide': !commenting}">
+																										Comments
+																										<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																									</label>
+																								</div>
+																								<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
+																							</div>
+																						</div>
+																						<div class="small-3 columns text-center">
+																							<div class="expanded tiny button-group">
+																								<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																								<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="qac-screen-component-container" ng-init="tcsindex = $index" ng-repeat="testCaseGroupComponent in testCaseGroup.components">
+																					<div class="callout qac-container--base qac-screen-component-header">
+																						<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button warning"></span> {{testCaseGroupComponent.label}}</a>
+																					</div>
+																					<div class="callout qac-container--base warning" ng-init="tcindex = $index" ng-repeat="testCase in testCaseGroupComponent.testCases">
+																						<div class="row" ng-controller="TestCaseController">
+																							<div class="small-9 columns">
+																								<div class="row">
+																									<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.C.{{tcindex+1}}">{{tcindex+1}}</span></div>
+																									<div class="small-10 columns">
+																										<label>{{testCase.question}}</label>
+																										<hr ng-class="{'hide': !commenting}" />
+																										<label ng-class="{'hide': !commenting}">
+																											Comments
+																											<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																										</label>
+																									</div>
+																									<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
+																								</div>
+																							</div>
+																							<div class="small-3 columns text-center">
+																								<div class="expanded tiny button-group">
+																									<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																									<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</li>
+										
+																		<li class="accordion-item" ng-if="screen.objects">
+																			<a href="#qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" role="tab" class="accordion-title qac-screen-group-header" id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading" aria-controls="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}">{{tccindex+1}}. Data</a>
+																			<div id="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}" class="accordion-content qac-checklist-screen-testcases-container" role="tabpanel" data-tab-content aria-labelledby="qac-group--{{group.id}}-{{screen.id}}-{{object.id}}-heading">
+																				<div class="qac-object-data-container" ng-init="oindex = $index" ng-repeat="object in screen.objects">
+																					<div class="callout qac-container--base qac-screen-object-data-header">
+																						<a href="#"><i class="fa fa-angle-right"></i> <span class="qac-screen-component-key button primary"></span> {{object.label}}</a>
+																					</div>
+																					<div class="callout qac-container--base primary"  ng-init="opindex = $index" ng-repeat="testCase in object.properties">
+																						<div class="row" ng-controller="TestCaseController">
+																							<div class="small-9 columns">
+																								<div class="row">
+																									<div class="small-1 text-center columns"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Full ID: {{cindex+1}}.{{sindex+1}}.{{tccindex+1}}.OP.{{oindex+1}}">{{opindex+1}}</span></div>
+																									<div class="small-10 columns">
+																										<label>{{testCase.label}}</label>
+																										<hr ng-class="{'hide': !commenting}" />
+																										<label ng-class="{'hide': !commenting}">
+																											Comments
+																											<textarea placeholder="Steps to reproduce..." ng-model="testCaseResult.comments"></textarea>
+																										</label>
+																									</div>
+																									<div class="small-1 columns" ng-class="{'hide': !testCaseResult.result}"><a ng-click="toggleComments()"><i class="fa fa-comment-o"></i></a></div>
+																								</div>
+																							</div>
+																							<div class="small-3 columns text-center">
+																								<div class="expanded tiny button-group">
+																									<a class="button alert result fail" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'fail'}" ng-click="setResultFail()"><i class="fa fa-times"></i> Fail</a>
+																									<a class="button success result pass" ng-class="{'hollow': !testCaseResult.result || testCaseResult.result != 'pass'}" ng-click="setResultPass()"><i class="fa fa-check"></i> Pass</a>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</li>
+																	</ul>
+																	<!-- Test Case Groups List End -->
+																</div>
+															</div>
+														</div>
+														<!-- Primary Tab Panel Close -->
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									
+									
+									<div class="tabs-panel" id="qac-testCases-container" ng-controller="TestCasesTabContainerController">
+										<div class="qac-top-tab-panel-header row">
+											<div class="small-8 columns">
+												<h5><i class="fa fa-check-square-o"></i> TEST CASES</h5>
+											</div>
+											<div class="small-4 columns text-right">
+												<button class="button tiny hollow" data-open="qac-testCase-modal" ng-click="setTestCaseToEdit()"><i class="fa fa-plus"></i> Add Test Case</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 columns">
+												<table id="qac-testCases-list" datatable="ng">
+													<thead>
+														<tr>
+															<th>Test Case</th>
+															<th>Group</th>
+															<th>Components</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="testCase in testCasesList">
+															<td class="qac-testCase-list-label-cell-{{testCase.id}}" ng-click="setTestCaseToEdit(testCase)">
+																<a href="javascript:void(0);" data-open="qac-testCase-modal">{{testCase.question}}</a>
+															</td>
+															<td class="qac-testCase-list-group-cell-{{testCase.id}}">
+																{{testCase.group}}
+															</td>
+															<td class="qac-testCase-list-group-cell-{{testCase.id}}">
+																{{testCase.components}}
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
 						
 						
 					
-						<div class="tabs-panel" id="qac-screens-container" ng-controller="ScreensTabContainerController">
-							<div class="row">
-								<div class="small-12 columns text-right">
-									<button class="button" data-open="qac-screen-modal" ng-click="setScreenToEdit()"><i class="fa fa-plus"></i> Add Screen</button>
+									<div class="tabs-panel" id="qac-screens-container" ng-controller="ScreensTabContainerController">
+										<div class="qac-top-tab-panel-header row">
+											<div class="small-8 columns">
+												<h5><i class="fa fa-desktop"></i> SCREENS</h5>
+											</div>
+											<div class="small-4 columns text-right">
+												<button class="button tiny hollow" data-open="qac-screen-modal" ng-click="setScreenToEdit()"><i class="fa fa-plus"></i> Add Screen</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 columns">
+												<table id="qac-screens-list" datatable="ng">
+													<thead>
+														<tr>
+															<th>Screen</th>
+															<th>Group</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="screen in screensList">
+															<td class="qac-screen-list-label-cell-{{screen.id}}" ng-click="setScreenToEdit(screen)">
+																<a href="javascript:void(0);" data-open="qac-screen-modal">{{screen.label}}</a>
+															</td>
+															<td class="qac-screen-list-group-cell-{{screen.id}}">
+																{{screenGroups[ screen.group ].label}}
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+						
+						
+						
+									<div class="tabs-panel" ng-controller="ComponentsTabContainerController" id="qac-components-container">
+										<div class="qac-top-tab-panel-header row">
+											<div class="small-8 columns">
+												<h5><i class="fa fa-cubes"></i> COMPONENTS</h5>
+											</div>
+											<div class="small-4 columns text-right">
+												<button class="button tiny hollow" data-open="qac-component-modal" ng-click="setComponentToEdit()"><i class="fa fa-plus"></i> Add Component</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 columns">
+												<table id="qac-components-list" datatable="ng">
+													<thead>
+														<tr>
+															<th>Component</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="component in componentsList">
+															<td class="qac-component-list-group-cell-{{screen.id}}" ng-click="setComponentToEdit(component)">
+																<a href="javascript:void(0);" data-open="qac-component-modal">{{component.label}}</a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+						
+						
+						
+									<div class="tabs-panel" id="qac-objects-container" ng-controller="qaObjectsTabContainerController">
+										<div class="qac-top-tab-panel-header row">
+											<div class="small-8 columns">
+												<h5><i class="fa fa-object-group"></i> OBJECTS</h5>
+											</div>
+											<div class="small-4 columns text-right">
+												<button class="button tiny hollow" data-open="qac-qaobject-modal" ng-click="setQAObjectToEdit()"><i class="fa fa-plus"></i> Add Object</button>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 columns">
+												<table id="qac-qaobjects-list" datatable="ng">
+													<thead>
+														<tr>
+															<th>Object</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="qaobject in qaobjectsList">
+															<td class="qac-qaobject-list-group-cell-{{screen.id}}" ng-click="setQAObjectToEdit(qaobject)">
+																<a href="javascript:void(0);" data-open="qac-qaobject-modal">{{qaobject.label}}</a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+						
+						
 								</div>
+								<!-- Tab Content Start -->
 							</div>
-							<div class="row">
-								<div class="small-12 columns">
-									<table id="qac-screens-list" datatable="ng">
-										<thead>
-											<tr>
-												<th>Screen</th>
-												<th>Group</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="screen in screensList">
-												<td class="qac-screen-list-label-cell-{{screen.id}}" ng-click="setScreenToEdit(screen)">
-													<a href="javascript:void(0);" data-open="qac-screen-modal">{{screen.label}}</a>
-												</td>
-												<td class="qac-screen-list-group-cell-{{screen.id}}">
-													{{screenGroups[ screen.group ].label}}
-												</td>
-											</tr>
-										</tbody>
-									</table>
+						</div>
+					</section>
+					<!-- Body Content End -->
+					
+					<br/><br/>				
+					<footer class="title-bar no-print" style="position: absolute; bottom: 0px; width: 100%;">
+						<div class="row">
+							<div class="small-8 columns">
+								<small><i class="fa fa-check-square-o"></i> QA Checklist</small>
+							</div>
+							<div class="small-4 columns text-right">
+								<div class="row">
+									<div class="small-6 columns text-center">
+										<button ng-if="mode=='reporting'" type="button" class="button tiny expanded qac-header-control-button" ng-click="startCollection()"><i class="fa fa-check-square-o"></i> Checklist</button>
+									</div>
+									<div class="small-6 columns text-center">
+										<button ng-if="mode=='collection'" type="button" class="button tiny expanded qac-header-control-button" ng-click="generateReport()"><i class="fa fa-bar-chart"></i> Generate</button>
+										<button ng-if="mode=='reporting'" type="button" class="button tiny expanded qac-header-control-button" ng-click="publishReport()"><i class="fa fa-cloud-upload"></i> Publish</button>
+									</div>
 								</div>
 							</div>
 						</div>
-						
-						
-						
-						<div class="tabs-panel" ng-controller="ComponentsTabContainerController" id="qac-components-container">
-							<div class="row">
-								<div class="small-12 columns text-right">
-									<button class="button" data-open="qac-component-modal" ng-click="setComponentToEdit()"><i class="fa fa-plus"></i> Add Component</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="small-12 columns">
-									<table id="qac-components-list" datatable="ng">
-										<thead>
-											<tr>
-												<th>Component</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="component in componentsList">
-												<td class="qac-component-list-group-cell-{{screen.id}}" ng-click="setComponentToEdit(component)">
-													<a href="javascript:void(0);" data-open="qac-component-modal">{{component.label}}</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						
-						
-						
-						<div class="tabs-panel" id="qac-objects-container" ng-controller="qaObjectsTabContainerController">
-							<div class="row">
-								<div class="small-12 columns text-right">
-									<button class="button" data-open="qac-qaobject-modal" ng-click="setQAObjectToEdit()"><i class="fa fa-plus"></i> Add Object</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="small-12 columns">
-									<table id="qac-qaobjects-list" datatable="ng">
-										<thead>
-											<tr>
-												<th>Object</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat="qaobject in qaobjectsList">
-												<td class="qac-qaobject-list-group-cell-{{screen.id}}" ng-click="setQAObjectToEdit(qaobject)">
-													<a href="javascript:void(0);" data-open="qac-qaobject-modal">{{qaobject.label}}</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						
-						
-					</div>
+					</footer>
 				</div>
+				<!-- Off Canvas Content End -->
 			</div>
-		</section>
+		</div>
+		
+
 
 		<!-- QA Object Property Management Modal -->
 		<div id="qac-qaobjectProperty-modal" ng-controller="QAObjectPropertyEditController" class="reveal large" role="dialog" data-reveal>
@@ -1645,8 +1979,52 @@
 			</form>
 			
 			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
 				<div class="small-12 columns text-right">
 					<button class="button" ng-click="updateComponentFromEdits()" data-toggle="qac-component-modal"><i class="fa fa-check"></i> Done</button>
+				</div>
+			</div>
+
+			<button class="close-button" data-close aria-label="Close reveal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		
+		<!-- TestCase Management Modal -->
+		<div id="qac-testCase-modal" ng-controller="TestCaseEditController" class="reveal large" role="dialog" data-reveal>
+			<h1>Test Case Management</h1>
+			<form data-abide novalidate>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>ID
+							<input type="text" disabled ng-model="testCase.selectedID" placeholder="navigation-bar" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Name
+							<input type="text" ng-model="testCase.selected.label" placeholder="Field Check" required />
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label>Question
+							<input type="text" ng-model="testCase.selected.question" placeholder="Field Check" required />
+						</label>
+					</div>
+				</div>
+			</form>
+			
+			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
+				<div class="small-12 columns text-right">
+					<button class="button" ng-click="updateTestCaseFromEdits()" data-toggle="qac-testCase-modal"><i class="fa fa-check"></i> Done</button>
 				</div>
 			</div>
 
@@ -1691,6 +2069,9 @@
 			</form>
 			
 			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
 				<div class="small-12 columns text-right">
 					<button class="button" ng-click="updateScreenFromEdits()" data-toggle="qac-screen-modal"><i class="fa fa-check"></i> Done</button>
 				</div>
@@ -1735,6 +2116,9 @@
 			</ul>
 			
 			<div class="row">
+				<div class="small-12 columns">
+					<hr/>
+				</div>
 				<div class="small-12 columns text-right">
 					<button class="button" ng-click="updateScreenFromEdits()" data-toggle="qac-screen-modal"><i class="fa fa-check"></i> Done</button>
 				</div>
@@ -1790,6 +2174,8 @@
 			
 				$(document).foundation();
 				// $("table").DataTable();
+				
+				$("#offCanvasLeft,.off-canvas-content").height( $(window).height() );
 			});
 		</script>
 	</body>
